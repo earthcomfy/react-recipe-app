@@ -1,27 +1,19 @@
 import "./index.css";
 import React from "react";
 import ReactDOM from "react-dom";
-import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import reportWebVitals from "./reportWebVitals";
+import { Provider } from "react-redux";
+import store from "./redux/store";
 import App from "./App";
-import Header from "./components/Header";
-import Register from "./components/Account/Register";
-import Login from "./components/Account/Login";
+import reportWebVitals from "./reportWebVitals";
 
-const routing = (
-  <Router>
-    <React.StrictMode>
-      <Header />
-      <Routes>
-        <Route exact path="/" element={<App />} />
-        <Route exact path="/register" element={<Register />} />
-        <Route exact path="/login" element={<Login />} />
-      </Routes>
-    </React.StrictMode>
-  </Router>
+ReactDOM.render(
+  <React.StrictMode>
+    <Provider store={store}>
+      <App />
+    </Provider>
+  </React.StrictMode>,
+  document.getElementById("root")
 );
-
-ReactDOM.render(routing, document.getElementById("root"));
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))
