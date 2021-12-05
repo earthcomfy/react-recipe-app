@@ -38,7 +38,7 @@ export default function (state = initialState, action) {
         ...action.payload,
         isAuthenticated: true,
         isLoading: false,
-        token: JSON.parse(localStorage.getItem("recipe")),
+        token: action.payload.tokens,
       };
     case LOGIN_FAIL:
     case LOGOUT_SUCCESS:
