@@ -5,8 +5,19 @@ node_modules/
 .pnp
 .pnp.js
 
-# testing
-coverage
+# Unit test / coverage reports
+htmlcov/
+.tox/
+.coverage
+.coverage.*
+.cache
+nosetests.xml
+coverage.xml
+*,cover
+.hypothesis/
+
+# Custom
+media/
 
 # production
 build
