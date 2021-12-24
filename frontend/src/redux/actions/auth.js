@@ -9,7 +9,7 @@ import {
   GET_ERRORS,
   CLEAR_MESSAGE,
 } from "./types";
-import axiosInstance from "../../axios";
+import axiosInstance from "../../utils/axios";
 
 export const register =
   ({ username, email, password }) =>

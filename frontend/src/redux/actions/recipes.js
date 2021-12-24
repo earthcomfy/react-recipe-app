@@ -4,7 +4,7 @@ import {
   GET_DETAIL_RECIPE,
   GET_ERRORS,
 } from "./types";
-import axiosInstance from "../../axios";
+import axiosInstance from "../../utils/axios";
 import { tokenConfig } from "./auth";
 
 export const getRecipes = () => (dispatch) => {
