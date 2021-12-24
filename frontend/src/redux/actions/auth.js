@@ -100,7 +100,7 @@ export const logout =
   };
 
 export const tokenConfig = (getState) => {
-  const token = getState().auth.token.access;
+  const token = getState().auth.token;
 
   const config = {
     headers: {
@@ -109,7 +109,7 @@ export const tokenConfig = (getState) => {
   };
 
   if (token) {
-    config.headers["Authorization"] = `Bearer ${token}`;
+    config.headers["Authorization"] = `Bearer ${token.access}`;
   }
 
   return config;
