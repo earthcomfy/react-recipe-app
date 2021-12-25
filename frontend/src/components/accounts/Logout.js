@@ -1,13 +1,21 @@
-import { Fragment, useRef } from "react";
+import { Fragment, useRef, useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { Dialog, Transition } from "@headlessui/react";
 import { ExclamationIcon } from "@heroicons/react/outline";
-import { useDispatch } from "react-redux";
+
 import { logout } from "../../redux/actions/auth";
 
 export default function Logout({ modal, setModal }) {
   const cancelButtonRef = useRef(null);
 
+  const { token } = useSelector((state) => state.auth);
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (!token) {
+      setModal(false);
+    }
+  }, [token]);
 
   const handleLogoutClick = () => {
     dispatch(

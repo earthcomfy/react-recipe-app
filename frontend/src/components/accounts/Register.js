@@ -11,16 +11,16 @@ export default function Register() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
 
-  const { isAuthenticated } = useSelector((state) => state.auth);
+  const { token } = useSelector((state) => state.auth);
   const { msg } = useSelector((state) => state.errors);
 
   const dispatch = useDispatch();
 
   useEffect(() => {
-    if (isAuthenticated) {
+    if (token) {
       navigate("/");
     }
-  }, [isAuthenticated]);
+  }, [token]);
 
   const handleFormSubmit = (e) => {
     e.preventDefault();
