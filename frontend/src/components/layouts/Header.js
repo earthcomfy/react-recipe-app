@@ -1,10 +1,13 @@
 import { Fragment, useState } from "react";
 import { Link } from "react-router-dom";
+import { useSelector } from "react-redux";
 import { Popover, Transition } from "@headlessui/react";
 import { MenuIcon, XIcon } from "@heroicons/react/outline";
+
 import Logout from "../accounts/Logout";
 
 export default function Header() {
+  const { token } = useSelector((state) => state.auth);
   const [modal, setModal] = useState(false);
   return (
     <>
@@ -28,24 +31,30 @@ export default function Header() {
               </Popover.Button>
             </div>
             <div className="hidden md:flex items-center justify-end md:flex-1 lg:w-0">
-              <Link
-                to="/login"
-                className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900"
-              >
-                Sign in
-              </Link>
-              <button
-                className="ml-8 whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900"
-                onClick={() => setModal(true)}
-              >
-                Logout
-              </button>
-              <Link
-                to="/register"
-                className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
-              >
-                Sign up
-              </Link>
+              {!token && (
+                <Link
+                  to="/login"
+                  className="whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900"
+                >
+                  Sign in
+                </Link>
+              )}
+              {token && (
+                <button
+                  className="ml-8 whitespace-nowrap text-base font-medium text-gray-500 hover:text-gray-900"
+                  onClick={() => setModal(true)}
+                >
+                  Logout
+                </button>
+              )}
+              {!token && (
+                <Link
+                  to="/register"
+                  className="ml-8 whitespace-nowrap inline-flex items-center justify-center px-4 py-2 border border-transparent rounded-md shadow-sm text-base font-medium text-white bg-indigo-600 hover:bg-indigo-700"
+                >
+                  Sign up
+                </Link>
+              )}
             </div>
           </div>
         </div>
