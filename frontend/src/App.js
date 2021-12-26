@@ -6,6 +6,7 @@ import Login from "./components/accounts/Login";
 import Landing from "./components/layouts/Landing";
 import Recipes from "./components/recipe/Recipes";
 import RecipeDetail from "./components/recipe/RecipeDetail";
+import RecipeCreate from "./components/recipe/recipe_form/RecipeCreate";
 import WithPrivateRoute from "./utils/WithPrivateRoute";
 
 export default function App() {
@@ -14,6 +15,9 @@ export default function App() {
       <Header />
       <Routes>
         <Route exact path="/" element={<Landing />} />
+        <Route exact path="/register" element={<Register />} />
+        <Route exact path="/login" element={<Login />} />
+
         <Route exact path="/recipe" element={<Recipes />} />
         <Route
           exact
@@ -24,8 +28,7 @@ export default function App() {
             </WithPrivateRoute>
           }
         />
-        <Route exact path="/register" element={<Register />} />
-        <Route exact path="/login" element={<Login />} />
+        <Route exact path="/recipe/create" element={<RecipeCreate />} />
       </Routes>
     </Router>
   );
