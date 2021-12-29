@@ -5,14 +5,14 @@ import { getDetailRecipe } from "../../redux/actions/recipes";
 
 export default function RecipeDetail() {
   const dispatch = useDispatch();
-  const { recipes, is_loading } = useSelector((state) => state.recipes);
+  const { detailRecipe } = useSelector((state) => state.recipes);
   const { id } = useParams();
 
   useEffect(() => {
     dispatch(getDetailRecipe(id));
   }, []);
 
-  if (!recipes || recipes.length === 0)
+  if (!detailRecipe || detailRecipe.length === 0)
     return (
       <div className="px-4 py-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-15">
         <p className="text-3xl text-center text-gray-700">
@@ -35,11 +35,11 @@ export default function RecipeDetail() {
         <div className="flex items-center p-2 duration-300 transform border rounded shadow hover:scale-105 sm:hover:scale-110">
           <div className=" h-full">
             <img
-              src={recipes.picture}
+              src={detailRecipe.picture}
               className="object-cover w-full h-48"
               alt=""
             />
-            {recipes.title}
+            {detailRecipe.title}
           </div>
         </div>
       </div>

@@ -3,7 +3,39 @@ import Ingredients from "./Ingredients";
 import Procedure from "./Procedure";
 import TimePicker from "./TimePicker";
 
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
+
+import { createRecipe } from "../../../redux/actions/recipes";
+
 export default function RecipeCreate() {
+  const [title, setTitle] = useState("");
+  const [desc, setDesc] = useState("");
+
+  const { category, ingredients, procedures, cook_time } = useSelector(
+    (state) => state.forms
+  );
+
+  const dispatch = useDispatch();
+
+  const [picture, setPicture] = useState([]);
+
+  const handleFormSubmit = (e) => {
+    e.preventDefault();
+
+    const formData = new FormData();
+
+    formData.append("category.name", category);
+    formData.append("picture", picture, picture.name);
+    formData.append("title", title);
+    formData.append("desc", desc);
+    formData.append("cook_time", cook_time);
+    formData.append("ingredients", ingredients.join(", "));
+    formData.append("procedure", JSON.stringify(procedures));
+
+    dispatch(createRecipe(formData));
+  };
+
   return (
     <>
       <div>
@@ -20,7 +52,7 @@ export default function RecipeCreate() {
             </div>
           </div>
           <div className="mt-5 md:mt-0 md:col-span-2">
-            <form action="#" method="POST">
+            <form onSubmit={handleFormSubmit}>
               <div className="shadow sm:rounded-md sm:overflow-hidden">
                 <div className="px-4 py-5 bg-white space-y-6 sm:p-6">
                   <div>
@@ -33,6 +65,7 @@ export default function RecipeCreate() {
                       id="title"
                       className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full rounded-md pt-2.5"
                       placeholder="Write a title..."
+                      onChange={(e) => setTitle(e.target.value)}
                     />
                   </div>
                   <div>
@@ -47,6 +80,7 @@ export default function RecipeCreate() {
                         className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"
                         placeholder="Write a short description..."
                         defaultValue={""}
+                        onChange={(e) => setDesc(e.target.value)}
                       />
                     </div>
                     <p className="mt-2 text-sm text-gray-500">
@@ -57,32 +91,6 @@ export default function RecipeCreate() {
                   <Ingredients />
                   <Procedure />
                   <TimePicker />
-                  {/* <div>
-                    <h1 className="text-lg leading-6 font-medium text-gray-900">
-                      Picture
-                    </h1>
-                    <p className="mt-1 text-sm text-gray-500">
-                      Picture of the food after it's complete.
-                    </p>
-                    <div className="mt-1 flex items-center">
-                      <span className="inline-block h-12 w-12 rounded-full overflow-hidden bg-gray-100">
-                        <svg
-                          className="h-full w-full text-gray-300"
-                          fill="currentColor"
-                          viewBox="0 0 24 24"
-                        >
-                          <path d="M24 20.993V24H0v-2.996A14.977 14.977 0 0112.004 15c4.904 0 9.26 2.354 11.996 5.993zM16.002 8.999a4 4 0 11-8 0 4 4 0 018 0z" />
-                        </svg>
-                      </span>
-                      <button
-                        type="button"
-                        className="ml-5 bg-white py-2 px-3 border border-gray-300 rounded-md shadow-sm text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
-                      >
-                        Change
-                      </button>
-                    </div>
-                  </div> */}
-
                   <div>
                     <h1 className="text-lg leading-6 font-medium text-gray-900">
                       Picture
@@ -117,6 +125,9 @@ export default function RecipeCreate() {
                               name="file-upload"
                               type="file"
                               className="sr-only"
+                              onChange={(e) => {
+                                setPicture(e.target.files[0]);
+                              }}
                             />
                           </label>
                           <p className="pl-1">or drag and drop</p>

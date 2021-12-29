@@ -3,6 +3,7 @@ import {
   GET_RECIPES,
   GET_DETAIL_RECIPE,
   GET_ERRORS,
+  CREATE_RECIPE,
 } from "./types";
 import axiosInstance from "../../utils/axios";
 import { tokenConfig } from "./auth";
@@ -39,6 +40,25 @@ export const getDetailRecipe = (id) => (dispatch, getState) => {
     .then((res) => {
       dispatch({
         type: GET_DETAIL_RECIPE,
+        payload: res.data,
+      });
+    })
+    .catch((err) => {
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response,
+      });
+    });
+};
+
+export const createRecipe = (formData) => (dispatch, getState) => {
+  dispatch({ type: RECIPE_LOADING });
+
+  axiosInstance
+    .post("/recipe/create/", formData, tokenConfig(getState))
+    .then((res) => {
+      dispatch({
+        type: CREATE_RECIPE,
         payload: res.data,
       });
     })

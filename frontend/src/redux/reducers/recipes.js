@@ -4,11 +4,14 @@ import {
   GET_RECIPES,
   GET_DETAIL_RECIPE,
   CLEAR_RECIPE,
+  CREATE_RECIPE,
 } from "../actions/types";
 
 const initialState = {
   is_loading: false,
   recipes: null,
+  detailRecipe: null,
+  createdRecipe: null,
 };
 
 export default function (state = initialState, action) {
@@ -28,13 +31,19 @@ export default function (state = initialState, action) {
       return {
         ...state,
         is_loading: false,
-        recipes: action.payload,
+        detailRecipe: action.payload,
       };
     case CLEAR_RECIPE:
       return {
         ...state,
         is_loading: false,
         recipes: null,
+      };
+    case CREATE_RECIPE:
+      return {
+        ...state,
+        is_loading: false,
+        createdRecipe: action.payload,
       };
     default:
       return state;

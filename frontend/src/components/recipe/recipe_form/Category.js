@@ -1,6 +1,9 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
 import { RadioGroup } from "@headlessui/react";
 import { CheckCircleIcon } from "@heroicons/react/solid";
+
+import { addCategory } from "../../../redux/actions/forms";
 
 const categories = [
   {
@@ -28,7 +31,15 @@ function classNames(...classes) {
 }
 
 export default function Category() {
-  const [selectedcategories, setSelectedcategories] = useState(categories[0]);
+  const [selectedcategories, setSelectedcategories] = useState(
+    categories[0].title
+  );
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    dispatch(addCategory(selectedcategories));
+  }, [selectedcategories]);
 
   return (
     <RadioGroup value={selectedcategories} onChange={setSelectedcategories}>
@@ -40,7 +51,7 @@ export default function Category() {
         {categories.map((category) => (
           <RadioGroup.Option
             key={category.id}
-            value={category}
+            value={category.title}
             className={({ checked, active }) =>
               classNames(
                 checked ? "border-transparent" : "border-gray-300",

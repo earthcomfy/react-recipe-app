@@ -1,6 +1,19 @@
-import React from "react";
+import { useState, useEffect } from "react";
+import { useDispatch } from "react-redux";
+
+import { addCooktime } from "../../../redux/actions/forms";
 
 export default function TimePicker() {
+  const dispatch = useDispatch();
+  const [hours, setHours] = useState("0");
+  const [minutes, setMinutes] = useState("00");
+  const [seconds, setSeconds] = useState("00");
+
+  useEffect(() => {
+    const cook_time = `${hours}:${minutes}:${seconds}`;
+    dispatch(addCooktime(cook_time));
+  }, [hours, minutes, seconds]);
+
   return (
     <div>
       <h1 className="text-lg leading-6 font-medium text-gray-900">Cook Time</h1>
@@ -12,7 +25,9 @@ export default function TimePicker() {
           <select
             name="hours"
             class="bg-transparent text-xl appearance-none outline-none"
+            onChange={(e) => setHours(e.target.value)}
           >
+            <option value="0">0</option>
             <option value="1">1</option>
             <option value="2">2</option>
             <option value="3">3</option>
@@ -30,16 +45,41 @@ export default function TimePicker() {
           <select
             name="minutes"
             class="bg-transparent text-xl appearance-none outline-none mr-4"
+            onChange={(e) => setMinutes(e.target.value)}
           >
-            <option value="0">00</option>
-            <option value="30">30</option>
+            <option value="00">00</option>
+            <option value="01">01</option>
+            <option value="02">02</option>
+            <option value="03">03</option>
+            <option value="04">04</option>
+            <option value="05">05</option>
+            <option value="06">06</option>
+            <option value="07">07</option>
+            <option value="08">08</option>
+            <option value="09">09</option>
+            <option value="10">10</option>
+            <option value="11">10</option>
+            <option value="12">12</option>
           </select>
+          <span class="text-xl mr-3">:</span>
           <select
-            name="ampm"
+            name="seconds"
             class="bg-transparent text-xl appearance-none outline-none"
+            onChange={(e) => setSeconds(e.target.value)}
           >
-            <option value="am">AM</option>
-            <option value="pm">PM</option>
+            <option value="00">00</option>
+            <option value="01">01</option>
+            <option value="02">02</option>
+            <option value="03">03</option>
+            <option value="04">04</option>
+            <option value="05">05</option>
+            <option value="06">06</option>
+            <option value="07">07</option>
+            <option value="08">08</option>
+            <option value="09">09</option>
+            <option value="10">10</option>
+            <option value="11">10</option>
+            <option value="12">12</option>
           </select>
         </div>
       </div>
