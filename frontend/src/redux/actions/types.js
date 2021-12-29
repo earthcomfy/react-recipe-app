@@ -24,3 +24,4 @@ export const ADD_INGREDIENTS = "ADD_INGREDIENTS";
 export const ADD_PROCEDURES = "ADD_PROCEDURES";
 export const ADD_COOKTIME = "ADD_COOKTIME";
 export const ADD_CATEGORY = "ADD_CATEGORY";
+export const ADD_PICTURE = "ADD_PICTURE";

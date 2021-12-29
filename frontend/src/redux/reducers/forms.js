@@ -3,6 +3,7 @@ import {
   ADD_CATEGORY,
   ADD_COOKTIME,
   ADD_INGREDIENTS,
+  ADD_PICTURE,
   ADD_PROCEDURES,
 } from "../actions/types";
 
@@ -11,6 +12,7 @@ const initialState = {
   procedures: [],
   cook_time: "",
   category: "",
+  picture: [],
 };
 
 export default function (state = initialState, action) {
@@ -34,6 +36,11 @@ export default function (state = initialState, action) {
       return {
         ...state,
         category: action.payload,
+      };
+    case ADD_PICTURE:
+      return {
+        ...state,
+        picture: action.payload,
       };
     default:
       return state;
