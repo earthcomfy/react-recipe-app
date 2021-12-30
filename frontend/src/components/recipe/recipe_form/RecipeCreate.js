@@ -29,7 +29,7 @@ export default function RecipeCreate() {
     formData.append("title", title);
     formData.append("desc", desc);
     formData.append("cook_time", cook_time);
-    formData.append("ingredients", ingredients.join(", "));
+    formData.append("ingredients", JSON.stringify(ingredients));
     formData.append("procedure", JSON.stringify(procedures));
 
     dispatch(createRecipe(formData));
