@@ -92,7 +92,7 @@ export default function RecipeDetail() {
 
               <div className="mt-3">
                 <h2 className="sr-only">Recipe information</h2>
-                <span className="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-gray-100 text-gray-800">
+                <span className="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-gray-100 text-cyan-600 ">
                   {detailRecipe.category.name}
                 </span>
               </div>
@@ -105,7 +105,7 @@ export default function RecipeDetail() {
                 />
               </div>
 
-              <div className="inline-flex items-center text-cyan-600 border py-1 px-2 border-transparent bg-cyan-50 rounded-md">
+              <div className="inline-flex items-center text-cyan-600 border py-1 px-2 mt-3 border-transparent bg-cyan-50 rounded-md">
                 <ClockIcon className="h-8 w-8 text-cyan-600 pr-1" />{" "}
                 <span className="font-medium">{detailRecipe.cook_time}</span>
               </div>
@@ -120,21 +120,20 @@ export default function RecipeDetail() {
                       className="h-6 w-6 flex-shrink-0"
                       aria-hidden="true"
                     />
-                    <p className="hidden group-hover:block group-hover:text-red-700">
-                      Add to bookmark
-                    </p>
+                    <p className="hidden ml-1 group-hover:block">Save</p>
                     <span className="ml-2">
                       {detailRecipe.total_number_of_likes}
                     </span>
                   </button>
                   <button
                     type="button"
-                    className="ml-4 py-3 px-3 rounded-md flex items-center justify-center text-gray-400 hover:bg-gray-100 hover:text-gray-500"
+                    className="group ml-4 py-3 px-3 rounded-md flex items-center justify-center text-gray-400 hover:bg-gray-100 hover:text-gray-500"
                   >
                     <HeartIcon
                       className="h-6 w-6 flex-shrink-0"
                       aria-hidden="true"
                     />
+                    <p className="hidden ml-1 group-hover:block">Like</p>
                     <span className="ml-2">
                       {detailRecipe.total_number_of_likes}
                     </span>
