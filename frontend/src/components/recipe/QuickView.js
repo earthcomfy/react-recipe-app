@@ -1,12 +1,16 @@
 import { Fragment } from "react";
-import { useSelector } from "react-redux";
+import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
 import { Dialog, Transition } from "@headlessui/react";
 import { XIcon, HeartIcon, BookmarkIcon } from "@heroicons/react/outline";
 
+import { likeRecipe } from "../../redux/actions/recipes";
+
 export default function QuickView({ open, setOpen, id }) {
   const { recipes, is_loading } = useSelector((state) => state.recipes);
+
+  const dispatch = useDispatch();
 
   const recipe = recipes.filter((recipe) => recipe.id === id);
 
@@ -119,6 +123,7 @@ export default function QuickView({ open, setOpen, id }) {
                             <button
                               type="button"
                               className="group ml-4 py-3 px-3 rounded-md flex items-center justify-center text-gray-400 hover:bg-gray-100 hover:text-gray-500"
+                              onClick={() => dispatch(likeRecipe(id))}
                             >
                               <HeartIcon
                                 className="h-6 w-6 flex-shrink-0"
