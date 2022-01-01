@@ -5,6 +5,7 @@ import {
   GET_DETAIL_RECIPE,
   CLEAR_RECIPE,
   CREATE_RECIPE,
+  LIKE_RECIPE,
 } from "../actions/types";
 
 const initialState = {
@@ -12,6 +13,7 @@ const initialState = {
   recipes: null,
   detailRecipe: null,
   createdRecipe: null,
+  likedRecipe: null,
 };
 
 export default function (state = initialState, action) {
@@ -44,6 +46,12 @@ export default function (state = initialState, action) {
         ...state,
         is_loading: false,
         createdRecipe: action.payload,
+      };
+    case LIKE_RECIPE:
+      return {
+        ...state,
+        is_loading: false,
+        likedRecipe: action.payload,
       };
     default:
       return state;

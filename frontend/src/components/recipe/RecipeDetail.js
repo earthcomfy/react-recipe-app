@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
 import { Disclosure } from "@headlessui/react";
@@ -10,7 +10,7 @@ import {
 } from "@heroicons/react/outline";
 import { ClockIcon } from "@heroicons/react/solid";
 
-import { getDetailRecipe } from "../../redux/actions/recipes";
+import { getDetailRecipe, likeRecipe } from "../../redux/actions/recipes";
 
 const relatedProducts = [
   {
@@ -128,6 +128,7 @@ export default function RecipeDetail() {
                   <button
                     type="button"
                     className="group ml-4 py-3 px-3 rounded-md flex items-center justify-center text-gray-400 hover:bg-gray-100 hover:text-gray-500"
+                    onClick={() => dispatch(likeRecipe(id))}
                   >
                     <HeartIcon
                       className="h-6 w-6 flex-shrink-0"

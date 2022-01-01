@@ -19,6 +19,8 @@ export const GET_USER_RECIPES = "GET_USER_RECIPES";
 export const CREATE_RECIPE = "CREATE_RECIPE";
 export const EDIT_RECIPE = "EDIT_RECIPE";
 export const DELETE_RECIPE = "DELETE_RECIPE";
+export const LIKE_RECIPE = "LIKE_RECIPE";
+export const SAVE_RECIPE = "SAVE_RECIPE";
 
 export const ADD_INGREDIENTS = "ADD_INGREDIENTS";
 export const ADD_PROCEDURES = "ADD_PROCEDURES";
