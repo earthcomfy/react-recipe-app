@@ -1,12 +1,15 @@
 import { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import { useDispatch, useSelector } from "react-redux";
+import { Link } from "react-router-dom";
+
 import { Disclosure } from "@headlessui/react";
 import {
   HeartIcon,
   MinusSmIcon,
   PlusSmIcon,
   BookmarkIcon,
+  PencilIcon,
 } from "@heroicons/react/outline";
 import { ClockIcon } from "@heroicons/react/solid";
 
@@ -86,9 +89,24 @@ export default function RecipeDetail() {
 
             {/* Recipe info */}
             <div className="mt-10 px-4 sm:px-0 sm:mt-16 lg:mt-0">
-              <h1 className="text-3xl font-extrabold tracking-tight text-gray-900">
-                {detailRecipe.title}
-              </h1>
+              <div className="flex sm:flex-col1">
+                <h1 className="flex text-3xl font-extrabold tracking-tight text-gray-900">
+                  {detailRecipe.title}
+                </h1>
+
+                <Link to={`/recipe/${id}/edit/`}>
+                  <button
+                    type="button"
+                    className="group ml-4 py-3 px-3 rounded-md flex items-center justify-center text-gray-400 hover:bg-gray-100 hover:text-gray-500"
+                  >
+                    <PencilIcon
+                      className="h-5 w-5 flex-shrink-0"
+                      aria-hidden="true"
+                    />
+                    <p className="hidden ml-1 group-hover:block">Edit Recipe</p>
+                  </button>
+                </Link>
+              </div>
 
               <div className="mt-3">
                 <h2 className="sr-only">Recipe information</h2>

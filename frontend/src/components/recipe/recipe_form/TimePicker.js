@@ -3,11 +3,18 @@ import { useDispatch } from "react-redux";
 
 import { addCooktime } from "../../../redux/actions/forms";
 
-export default function TimePicker() {
+export default function TimePicker({ editMode, recipe }) {
   const dispatch = useDispatch();
-  const [hours, setHours] = useState("0");
-  const [minutes, setMinutes] = useState("00");
-  const [seconds, setSeconds] = useState("00");
+
+  let defaultCookTime;
+
+  if (editMode) {
+    defaultCookTime = recipe[0].cook_time.split(":");
+  }
+
+  const [hours, setHours] = useState(editMode ? defaultCookTime[0] : "0");
+  const [minutes, setMinutes] = useState(editMode ? defaultCookTime[1] : "00");
+  const [seconds, setSeconds] = useState(editMode ? defaultCookTime[2] : "00");
 
   useEffect(() => {
     const cook_time = `${hours}:${minutes}:${seconds}`;
@@ -27,6 +34,9 @@ export default function TimePicker() {
             class="bg-transparent text-xl appearance-none outline-none"
             onChange={(e) => setHours(e.target.value)}
           >
+            <option value={hours} selected disabled>
+              {hours}
+            </option>
             <option value="0">0</option>
             <option value="1">1</option>
             <option value="2">2</option>
@@ -47,6 +57,9 @@ export default function TimePicker() {
             class="bg-transparent text-xl appearance-none outline-none mr-4"
             onChange={(e) => setMinutes(e.target.value)}
           >
+            <option value={minutes} selected disabled>
+              {minutes}
+            </option>
             <option value="00">00</option>
             <option value="01">01</option>
             <option value="02">02</option>
@@ -67,6 +80,9 @@ export default function TimePicker() {
             class="bg-transparent text-xl appearance-none outline-none"
             onChange={(e) => setSeconds(e.target.value)}
           >
+            <option value={seconds} selected disabled>
+              {seconds}
+            </option>
             <option value="00">00</option>
             <option value="01">01</option>
             <option value="02">02</option>

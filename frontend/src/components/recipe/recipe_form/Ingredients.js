@@ -4,13 +4,23 @@ import { PlusIcon } from "@heroicons/react/solid";
 
 import { addIngredients } from "../../../redux/actions/forms";
 
-export default function Ingredients() {
+export default function Ingredients({ editMode, recipe }) {
   let textInput = createRef();
 
   const [ingredients, setIngredients] = useState([]);
   const [inputValue, setInputValue] = useState("");
 
   const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (recipe && editMode === true) {
+      const defaultIngredients = JSON.parse(recipe[0].ingredients);
+
+      defaultIngredients.map((defaultIngredient) =>
+        setIngredients((e) => [...e, defaultIngredient])
+      );
+    }
+  }, []);
 
   useEffect(() => {
     dispatch(addIngredients(ingredients));

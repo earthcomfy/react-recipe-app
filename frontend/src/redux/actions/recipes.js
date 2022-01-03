@@ -5,6 +5,7 @@ import {
   GET_ERRORS,
   CREATE_RECIPE,
   LIKE_RECIPE,
+  EDIT_RECIPE,
 } from "./types";
 import axiosInstance from "../../utils/axios";
 import { tokenConfig } from "./auth";
@@ -60,6 +61,25 @@ export const createRecipe = (formData) => (dispatch, getState) => {
     .then((res) => {
       dispatch({
         type: CREATE_RECIPE,
+        payload: res.data,
+      });
+    })
+    .catch((err) => {
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response,
+      });
+    });
+};
+
+export const editRecipe = (id, formData) => (dispatch, getState) => {
+  dispatch({ type: RECIPE_LOADING });
+
+  axiosInstance
+    .patch(`/recipe/${id}/`, formData, tokenConfig(getState))
+    .then((res) => {
+      dispatch({
+        type: EDIT_RECIPE,
         payload: res.data,
       });
     })

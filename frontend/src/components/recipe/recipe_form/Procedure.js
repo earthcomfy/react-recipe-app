@@ -4,13 +4,23 @@ import { PlusIcon } from "@heroicons/react/solid";
 
 import { addProcedures } from "../../../redux/actions/forms";
 
-export default function Procedure() {
+export default function Procedure({ editMode, recipe }) {
   let textInput = createRef();
 
   const dispatch = useDispatch();
 
   const [procedures, setProcedures] = useState([]);
   const [inputValue, setInputValue] = useState("");
+
+  useEffect(() => {
+    if (recipe && editMode === true) {
+      const defaultProcedures = JSON.parse(recipe[0].procedure);
+
+      defaultProcedures.map((defaultProcedure) =>
+        setProcedures((e) => [...e, defaultProcedure])
+      );
+    }
+  }, []);
 
   useEffect(() => {
     dispatch(addProcedures(procedures));

@@ -30,9 +30,9 @@ function classNames(...classes) {
   return classes.filter(Boolean).join(" ");
 }
 
-export default function Category() {
+export default function Category({ editMode, recipe }) {
   const [selectedcategories, setSelectedcategories] = useState(
-    categories[0].title
+    editMode ? recipe[0].category.name : categories[0].title
   );
 
   const dispatch = useDispatch();
