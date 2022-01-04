@@ -10,10 +10,15 @@ import {
   PlusSmIcon,
   BookmarkIcon,
   PencilIcon,
+  TrashIcon,
 } from "@heroicons/react/outline";
 import { ClockIcon } from "@heroicons/react/solid";
 
-import { getDetailRecipe, likeRecipe } from "../../redux/actions/recipes";
+import {
+  getDetailRecipe,
+  likeRecipe,
+  deleteRecipe,
+} from "../../redux/actions/recipes";
 
 const relatedProducts = [
   {
@@ -106,6 +111,17 @@ export default function RecipeDetail() {
                     <p className="hidden ml-1 group-hover:block">Edit Recipe</p>
                   </button>
                 </Link>
+                <button
+                  type="button"
+                  className="group ml-4 py-3 px-3 rounded-md flex items-center justify-center text-gray-400 hover:bg-gray-100 hover:text-gray-500"
+                  onClick={() => dispatch(deleteRecipe(id))}
+                >
+                  <TrashIcon
+                    className="h-5 w-5 flex-shrink-0"
+                    aria-hidden="true"
+                  />
+                  <p className="hidden ml-1 group-hover:block">Delete Recipe</p>
+                </button>
               </div>
 
               <div className="mt-3">

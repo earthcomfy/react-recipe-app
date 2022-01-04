@@ -6,6 +6,7 @@ import {
   CREATE_RECIPE,
   LIKE_RECIPE,
   EDIT_RECIPE,
+  DELETE_RECIPE,
 } from "./types";
 import axiosInstance from "../../utils/axios";
 import { tokenConfig } from "./auth";
@@ -80,6 +81,25 @@ export const editRecipe = (id, formData) => (dispatch, getState) => {
     .then((res) => {
       dispatch({
         type: EDIT_RECIPE,
+        payload: res.data,
+      });
+    })
+    .catch((err) => {
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response,
+      });
+    });
+};
+
+export const deleteRecipe = (id) => (dispatch, getState) => {
+  dispatch({ type: RECIPE_LOADING });
+
+  axiosInstance
+    .delete(`/recipe/${id}/`, tokenConfig(getState))
+    .then((res) => {
+      dispatch({
+        type: DELETE_RECIPE,
         payload: res.data,
       });
     })
