@@ -7,6 +7,7 @@ import {
   LIKE_RECIPE,
   EDIT_RECIPE,
   DELETE_RECIPE,
+  SAVE_RECIPE,
 } from "./types";
 import axiosInstance from "../../utils/axios";
 import { tokenConfig } from "./auth";
@@ -119,6 +120,27 @@ export const likeRecipe = (id) => (dispatch, getState) => {
     .then((res) => {
       dispatch({
         type: LIKE_RECIPE,
+        payload: res.data,
+      });
+    })
+    .catch((err) => {
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response,
+      });
+    });
+};
+
+export const saveRecipe = (user_id, id) => (dispatch, getState) => {
+  dispatch({ type: RECIPE_LOADING });
+
+  const body = JSON.stringify({ id });
+
+  axiosInstance
+    .post(`/user/profile/${user_id}/bookmarks/`, body, tokenConfig(getState))
+    .then((res) => {
+      dispatch({
+        type: SAVE_RECIPE,
         payload: res.data,
       });
     })

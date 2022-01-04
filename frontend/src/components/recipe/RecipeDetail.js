@@ -14,7 +14,11 @@ import {
 } from "@heroicons/react/outline";
 import { ClockIcon } from "@heroicons/react/solid";
 
-import { getDetailRecipe, likeRecipe } from "../../redux/actions/recipes";
+import {
+  getDetailRecipe,
+  likeRecipe,
+  saveRecipe,
+} from "../../redux/actions/recipes";
 
 import RecipeDelete from "./RecipeDelete";
 
@@ -154,6 +158,9 @@ export default function RecipeDetail() {
                     <button
                       type="button"
                       className="group ml-4 py-3 px-3 rounded-md flex items-center justify-center text-gray-400 hover:bg-gray-100 hover:text-gray-500"
+                      onClick={() =>
+                        dispatch(saveRecipe(detailRecipe.author, id))
+                      }
                     >
                       <BookmarkIcon
                         className="h-6 w-6 flex-shrink-0"
@@ -161,7 +168,7 @@ export default function RecipeDetail() {
                       />
                       <p className="hidden ml-1 group-hover:block">Save</p>
                       <span className="ml-2">
-                        {detailRecipe.total_number_of_likes}
+                        {detailRecipe.total_number_of_bookmarks}
                       </span>
                     </button>
                     <button

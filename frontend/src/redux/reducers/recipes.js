@@ -8,6 +8,7 @@ import {
   LIKE_RECIPE,
   EDIT_RECIPE,
   DELETE_RECIPE,
+  SAVE_RECIPE,
 } from "../actions/types";
 
 const initialState = {
@@ -59,6 +60,11 @@ export default function (state = initialState, action) {
         likedRecipe: action.payload,
       };
     case DELETE_RECIPE:
+      return {
+        ...state,
+        is_loading: false,
+      };
+    case SAVE_RECIPE:
       return {
         ...state,
         is_loading: false,

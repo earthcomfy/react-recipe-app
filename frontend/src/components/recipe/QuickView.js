@@ -5,7 +5,7 @@ import { Link } from "react-router-dom";
 import { Dialog, Transition } from "@headlessui/react";
 import { XIcon, HeartIcon, BookmarkIcon } from "@heroicons/react/outline";
 
-import { likeRecipe } from "../../redux/actions/recipes";
+import { likeRecipe, saveRecipe } from "../../redux/actions/recipes";
 
 export default function QuickView({ open, setOpen, id }) {
   const { recipes, is_loading } = useSelector((state) => state.recipes);
@@ -15,6 +15,7 @@ export default function QuickView({ open, setOpen, id }) {
   const recipe = recipes.filter((recipe) => recipe.id === id);
 
   const [like, setLike] = useState(recipe[0].total_number_of_likes);
+  const [bookmark, setBookmark] = useState(recipe[0].total_number_of_bookmarks);
 
   return (
     <>
@@ -110,6 +111,10 @@ export default function QuickView({ open, setOpen, id }) {
                             <button
                               type="button"
                               className="group ml-4 py-3 px-3 rounded-md flex items-center justify-center text-gray-400 hover:bg-gray-100 hover:text-gray-500"
+                              onClick={() => {
+                                dispatch(saveRecipe(recipe[0].author, id));
+                                setBookmark(bookmark + 1);
+                              }}
                             >
                               <BookmarkIcon
                                 className="h-6 w-6 flex-shrink-0"
@@ -118,9 +123,7 @@ export default function QuickView({ open, setOpen, id }) {
                               <p className="hidden ml-1 group-hover:block">
                                 Save
                               </p>
-                              <span className="ml-2">
-                                {recipe[0].total_number_of_likes}
-                              </span>
+                              <span className="ml-2">{bookmark}</span>
                             </button>
                             <button
                               type="button"
