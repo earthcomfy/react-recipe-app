@@ -95,7 +95,7 @@ export const likeRecipe = (id) => (dispatch, getState) => {
   dispatch({ type: RECIPE_LOADING });
 
   axiosInstance
-    .post(`/recipe/${id}/like/`, tokenConfig(getState))
+    .post(`/recipe/${id}/like/`, null, tokenConfig(getState))
     .then((res) => {
       dispatch({
         type: LIKE_RECIPE,

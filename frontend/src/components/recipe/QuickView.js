@@ -1,4 +1,4 @@
-import { Fragment } from "react";
+import { Fragment, useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
@@ -13,6 +13,8 @@ export default function QuickView({ open, setOpen, id }) {
   const dispatch = useDispatch();
 
   const recipe = recipes.filter((recipe) => recipe.id === id);
+
+  const [like, setLike] = useState(recipe[0].total_number_of_likes);
 
   return (
     <>
@@ -123,7 +125,10 @@ export default function QuickView({ open, setOpen, id }) {
                             <button
                               type="button"
                               className="group ml-4 py-3 px-3 rounded-md flex items-center justify-center text-gray-400 hover:bg-gray-100 hover:text-gray-500"
-                              onClick={() => dispatch(likeRecipe(id))}
+                              onClick={() => {
+                                dispatch(likeRecipe(id));
+                                setLike(like + 1);
+                              }}
                             >
                               <HeartIcon
                                 className="h-6 w-6 flex-shrink-0"
@@ -132,9 +137,7 @@ export default function QuickView({ open, setOpen, id }) {
                               <p className="hidden ml-1 group-hover:block">
                                 Like
                               </p>
-                              <span className="ml-2">
-                                {recipe[0].total_number_of_likes}
-                              </span>
+                              <span className="ml-2">{like}</span>
                             </button>
                           </div>
 
