@@ -2,14 +2,11 @@ import { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getRecipes } from "../../redux/actions/recipes";
 
-import QuickView from "./QuickView";
+import RecipeCard from "./RecipeCard";
 
 export default function Recipes() {
   const dispatch = useDispatch();
   const { recipes, is_loading } = useSelector((state) => state.recipes);
-
-  const [open, setOpen] = useState(false);
-  const [id, setId] = useState(null);
 
   useEffect(() => {
     dispatch(getRecipes());
@@ -57,50 +54,8 @@ export default function Recipes() {
             perspiciatis unde omnis iste."
           </p>
         </div>
-        <div className="grid gap-5 row-gap-5 mb-8 lg:grid-cols-4 sm:grid-cols-2">
-          {recipes.map((recipe, idx) => {
-            return (
-              <div key={idx} className="relative group">
-                <div
-                  aria-label="View Item"
-                  className="inline-block overflow-hidden duration-300 transform bg-white rounded shadow-sm hover:-translate-y-2 hover:cursor-pointer"
-                  onClick={() => {
-                    setOpen(true);
-                    setId(recipe.id);
-                  }}
-                >
-                  <div className="flex flex-col h-full">
-                    <img
-                      src={recipe.picture}
-                      className="object-cover w-full h-48"
-                      alt=""
-                    />
-                    <div className="flex-grow border border-t-0 rounded-b">
-                      <div className="p-5">
-                        <h6 className="mb-2 font-semibold leading-5">
-                          {recipe.title}
-                        </h6>
-                        <p className="text-sm text-gray-900">
-                          {recipe.desc.substr(0, 100)}
-                        </p>
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-        <div className="text-center">
-          <a
-            href="/"
-            className="inline-flex items-center justify-center w-full h-12 px-6 font-medium tracking-wide text-white transition duration-200 rounded shadow-md md:w-auto bg-indigo-600 hover:bg-indigo-700 focus:shadow-outline focus:outline-none"
-          >
-            Learn more
-          </a>
-        </div>
+        <RecipeCard recipes={recipes} quickview={true} />
       </div>
-      {open && <QuickView open={open} setOpen={setOpen} id={id} />}
     </>
   );
 }
