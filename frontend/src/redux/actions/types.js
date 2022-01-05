@@ -29,3 +29,4 @@ export const ADD_PICTURE = "ADD_PICTURE";
 export const USER_LOADING = "USER_LOADING";
 export const USER_LOADED = "USER_LOADED";
 export const EDIT_USER = "EDIT_USER";
+export const CHANGE_PASSWORD = "CHANGE_PASSWORD";

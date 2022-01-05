@@ -1,5 +1,10 @@
 /* eslint-disable import/no-anonymous-default-export */
-import { USER_LOADING, USER_LOADED, EDIT_USER } from "../actions/types";
+import {
+  USER_LOADING,
+  USER_LOADED,
+  EDIT_USER,
+  CHANGE_PASSWORD,
+} from "../actions/types";
 
 const initialState = {
   is_loading: false,
@@ -24,6 +29,11 @@ export default function (state = initialState, action) {
         ...state,
         isLoading: false,
         user: action.payload,
+      };
+    case CHANGE_PASSWORD:
+      return {
+        ...state,
+        isLoading: false,
       };
 
     default:

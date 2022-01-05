@@ -2,13 +2,16 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { PencilIcon } from "@heroicons/react/solid";
 
-import { editUser } from "../../redux/actions/user";
+import { editUser, changePassword } from "../../redux/actions/user";
 
 export default function Profile({ user }) {
   const dispatch = useDispatch();
 
   const [username, setUsername] = useState(user && user.username);
   const [email, setEmail] = useState(user && user.email);
+
+  const [opassword, setOpassword] = useState(null);
+  const [npassword, setNpassword] = useState(null);
 
   return (
     <>
@@ -73,10 +76,25 @@ export default function Profile({ user }) {
             Change Password
           </h2>
           <div className="mt-2 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
-            <div className="mt-4 flex space-x-3 md:mt-0">
+            <div className="mt-4 md:mt-0">
               <div>
+                <label htmlFor="opassword" className="sr-only">
+                  Old Password
+                </label>
+                <input
+                  id="opassword"
+                  name="opassword"
+                  type="password"
+                  autoComplete="old-password"
+                  required
+                  className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
+                  placeholder="Old Password"
+                  onChange={(e) => setOpassword(e.target.value)}
+                />
+              </div>
+              <div className="mt-2">
                 <label htmlFor="password" className="sr-only">
-                  Password
+                  New Password
                 </label>
                 <input
                   id="password"
@@ -85,18 +103,22 @@ export default function Profile({ user }) {
                   autoComplete="current-password"
                   required
                   className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-b-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
-                  placeholder="Password"
+                  placeholder="New Password"
+                  onChange={(e) => setNpassword(e.target.value)}
                 />
               </div>
               <button
                 type="button"
-                className="inline-flex justify-center px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
+                className="inline-flex justify-center mt-2 px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
+                onClick={() =>
+                  dispatch(changePassword(user.id, opassword, npassword))
+                }
               >
                 <PencilIcon
                   className="-ml-1 mr-2 h-5 w-5 text-gray-400"
                   aria-hidden="true"
                 />
-                <span>Edit</span>
+                <span>Update</span>
               </button>
             </div>
           </div>
