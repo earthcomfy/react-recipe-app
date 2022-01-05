@@ -9,6 +9,7 @@ import RecipeDetail from "./components/recipe/RecipeDetail";
 import RecipeCreate from "./components/recipe/RecipeCreate";
 import RecipeEdit from "./components/recipe/RecipeEdit";
 import WithPrivateRoute from "./utils/WithPrivateRoute";
+import Dashboard from "./components/layouts/Dashboard";
 
 export default function App() {
   return (
@@ -31,6 +32,7 @@ export default function App() {
         />
         <Route exact path="/recipe/create" element={<RecipeCreate />} />
         <Route exact path="/recipe/:id/edit" element={<RecipeEdit />} />
+        <Route exact path="/dashboard" element={<Dashboard />} />
       </Routes>
     </Router>
   );
