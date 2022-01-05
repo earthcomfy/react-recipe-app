@@ -4,6 +4,7 @@ import errors from "./errors";
 import messages from "./messages";
 import recipes from "./recipes";
 import forms from "./forms";
+import user from "./user";
 
 export default combineReducers({
   auth,
@@ -11,4 +12,5 @@ export default combineReducers({
   messages,
   recipes,
   forms,
+  user,
 });

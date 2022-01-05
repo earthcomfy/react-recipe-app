@@ -1,7 +1,5 @@
 /* eslint-disable import/no-anonymous-default-export */
 import {
-  USER_LOADING,
-  USER_LOADED,
   REGISTER_SUCCESS,
   REGISTER_FAIL,
   LOGIN_SUCCESS,
@@ -18,18 +16,6 @@ const initialState = {
 
 export default function (state = initialState, action) {
   switch (action.type) {
-    case USER_LOADING:
-      return {
-        ...state,
-        isLoading: true,
-      };
-    case USER_LOADED:
-      return {
-        ...state,
-        isAuthenticated: true,
-        isLoading: false,
-        user: action.payload,
-      };
     case LOGIN_SUCCESS:
     case REGISTER_SUCCESS:
       localStorage.setItem("recipe", JSON.stringify(action.payload.tokens));

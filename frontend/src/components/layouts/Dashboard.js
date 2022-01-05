@@ -14,6 +14,7 @@ import { MailIcon } from "@heroicons/react/solid";
 import Profile from "../accounts/Profile";
 import MyRecipe from "../recipe/MyRecipes";
 import SavedRecipes from "../recipe/SavedRecipes";
+import { loadUser } from "../../redux/actions/user";
 
 const navigation = [
   { name: "Profile", icon: UserIcon, current: true },
@@ -31,6 +32,14 @@ export default function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
   const [selected, setSelected] = useState("Profile");
+
+  const dispatch = useDispatch();
+
+  const { user } = useSelector((state) => state.user);
+
+  useEffect(() => {
+    dispatch(loadUser(1));
+  }, []);
 
   return (
     <>
@@ -221,7 +230,7 @@ export default function Dashboard() {
               <div>
                 <div className="flex items-center">
                   <h1 className="ml-3 text-2xl font-bold leading-7 text-gray-900 sm:leading-9 sm:truncate">
-                    Good morning, Hana
+                    Good morning, {user && user.username}
                   </h1>
                 </div>
                 <dl className="flex flex-col ml-3 sm:mt-1 sm:flex-row sm:flex-wrap">
@@ -231,7 +240,7 @@ export default function Dashboard() {
                       className="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400"
                       aria-hidden="true"
                     />
-                    aa@aa.com
+                    {user && user.email}
                   </dd>
                 </dl>
               </div>
@@ -239,7 +248,7 @@ export default function Dashboard() {
           </div>
           <main className="flex-1 pb-8">
             {/* Page header */}
-            {selected === "Profile" && <Profile />}
+            {selected === "Profile" && <Profile user={user} />}
             {selected === "My Recipes" && <MyRecipe />}
             {selected === "Saved Recipes" && <SavedRecipes />}
           </main>

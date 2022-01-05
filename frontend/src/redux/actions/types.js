@@ -1,5 +1,3 @@
-export const USER_LOADING = "USER_LOADING";
-export const USER_LOADED = "USER_LOADED";
 export const REGISTER_SUCCESS = "REGISTER_SUCCESS";
 export const REGISTER_FAIL = "REGISTER_FAIL";
 export const LOGIN_SUCCESS = "LOGIN_SUCCESS";
@@ -27,3 +25,7 @@ export const ADD_PROCEDURES = "ADD_PROCEDURES";
 export const ADD_COOKTIME = "ADD_COOKTIME";
 export const ADD_CATEGORY = "ADD_CATEGORY";
 export const ADD_PICTURE = "ADD_PICTURE";
+
+export const USER_LOADING = "USER_LOADING";
+export const USER_LOADED = "USER_LOADED";
+export const EDIT_USER = "EDIT_USER";

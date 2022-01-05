@@ -1,6 +1,15 @@
+import { useState } from "react";
+import { useDispatch, useSelector } from "react-redux";
 import { PencilIcon } from "@heroicons/react/solid";
 
-export default function Profile() {
+import { editUser } from "../../redux/actions/user";
+
+export default function Profile({ user }) {
+  const dispatch = useDispatch();
+
+  const [username, setUsername] = useState(user && user.username);
+  const [email, setEmail] = useState(user && user.email);
+
   return (
     <>
       <div className="mt-8">
@@ -22,6 +31,8 @@ export default function Profile() {
                   required
                   className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                   placeholder="Username"
+                  defaultValue={user && user.username}
+                  onChange={(e) => setUsername(e.target.value)}
                 />
               </div>
               <div className="mt-2">
@@ -36,6 +47,8 @@ export default function Profile() {
                   required
                   className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                   placeholder="Email address"
+                  defaultValue={user && user.email}
+                  onChange={(e) => setEmail(e.target.value)}
                 />
               </div>
             </div>
@@ -43,6 +56,7 @@ export default function Profile() {
           <button
             type="button"
             className="inline-flex justify-center mt-2 px-4 py-2 border border-gray-300 shadow-sm text-sm font-medium rounded-md text-gray-700 bg-white hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-gray-900"
+            onClick={() => dispatch(editUser(user.id, username, email))}
           >
             <PencilIcon
               className="-ml-1 mr-2 h-5 w-5 text-gray-400"
