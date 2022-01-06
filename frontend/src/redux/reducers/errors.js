@@ -4,6 +4,7 @@ import { CLEAR_MESSAGE, GET_ERRORS } from "../actions/types";
 const initialState = {
   msg: {},
   status: null,
+  isOpen: false,
 };
 
 export default function (state = initialState, action) {
@@ -12,11 +13,13 @@ export default function (state = initialState, action) {
       return {
         msg: action.payload.data,
         status: action.payload.status,
+        isOpen: true,
       };
     case CLEAR_MESSAGE:
       return {
         msg: {},
         status: null,
+        isOpen: false,
       };
     default:
       return state;

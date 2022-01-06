@@ -11,10 +11,13 @@ import RecipeEdit from "./components/recipe/RecipeEdit";
 import WithPrivateRoute from "./utils/WithPrivateRoute";
 import Dashboard from "./components/layouts/Dashboard";
 
+import ErrorDiv from "./components/layouts/ErrorDiv";
+
 export default function App() {
   return (
     <Router>
       <Header />
+      <ErrorDiv />
       <Routes>
         <Route exact path="/" element={<Landing />} />
         <Route exact path="/register" element={<Register />} />
