@@ -4,11 +4,15 @@ import {
   USER_LOADED,
   EDIT_USER,
   CHANGE_PASSWORD,
+  GET_SAVED_RECIPES,
+  GET_USER_RECIPES,
 } from "../actions/types";
 
 const initialState = {
   is_loading: false,
   user: null,
+  savedRecipes: null,
+  userRecipes: null,
 };
 
 export default function (state = initialState, action) {
@@ -34,6 +38,18 @@ export default function (state = initialState, action) {
       return {
         ...state,
         isLoading: false,
+      };
+    case GET_SAVED_RECIPES:
+      return {
+        ...state,
+        isLoading: false,
+        savedRecipes: action.payload,
+      };
+    case GET_USER_RECIPES:
+      return {
+        ...state,
+        isLoading: false,
+        userRecipes: action.payload,
       };
 
     default:

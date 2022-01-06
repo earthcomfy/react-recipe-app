@@ -38,7 +38,7 @@ export default function Dashboard() {
   const { user } = useSelector((state) => state.user);
 
   useEffect(() => {
-    dispatch(loadUser(1));
+    dispatch(loadUser());
   }, []);
 
   return (

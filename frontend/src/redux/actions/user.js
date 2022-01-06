@@ -2,17 +2,20 @@ import {
   CHANGE_PASSWORD,
   EDIT_USER,
   GET_ERRORS,
+  GET_SAVED_RECIPES,
+  GET_USER_RECIPES,
+  RECIPE_LOADING,
   USER_LOADED,
   USER_LOADING,
 } from "./types";
 import axiosInstance from "../../utils/axios";
 import { tokenConfig } from "./auth";
 
-export const loadUser = (user_id) => (dispatch, getState) => {
+export const loadUser = () => (dispatch, getState) => {
   dispatch({ type: USER_LOADING });
 
   axiosInstance
-    .get(`/user/${user_id}/`, tokenConfig(getState))
+    .get("/user/", tokenConfig(getState))
     .then((res) => {
       dispatch({
         type: USER_LOADED,
@@ -27,13 +30,13 @@ export const loadUser = (user_id) => (dispatch, getState) => {
     });
 };
 
-export const editUser = (user_id, username, email) => (dispatch, getState) => {
+export const editUser = (username, email) => (dispatch, getState) => {
   dispatch({ type: USER_LOADING });
 
   const body = JSON.stringify({ username, email });
 
   axiosInstance
-    .put(`/user/${user_id}/`, body, tokenConfig(getState))
+    .put("/user/", body, tokenConfig(getState))
     .then((res) => {
       dispatch({
         type: EDIT_USER,
@@ -69,3 +72,43 @@ export const changePassword =
         });
       });
   };
+
+export const getSavedRecipes = (user_id, id) => (dispatch, getState) => {
+  dispatch({ type: RECIPE_LOADING });
+
+  const body = JSON.stringify({ id });
+
+  axiosInstance
+    .get(`/user/profile/${user_id}/bookmarks/`, body, tokenConfig(getState))
+    .then((res) => {
+      dispatch({
+        type: GET_SAVED_RECIPES,
+        payload: res.data,
+      });
+    })
+    .catch((err) => {
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response,
+      });
+    });
+};
+
+export const getUserRecipes = (username) => (dispatch, getState) => {
+  dispatch({ type: RECIPE_LOADING });
+
+  axiosInstance
+    .get(`/recipe/?author__username=${username}`, tokenConfig(getState))
+    .then((res) => {
+      dispatch({
+        type: GET_USER_RECIPES,
+        payload: res.data,
+      });
+    })
+    .catch((err) => {
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response,
+      });
+    });
+};
