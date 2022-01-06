@@ -1,30 +1,27 @@
-import RecipeCard from "./RecipeCard";
+import { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
 
-const recipes = [
-  {
-    title: "The Chocolate Cake",
-    picture:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.6&w=256&h=256&q=80",
-    desc: "The classic burger is an all time BBQ favourite! This super easy homemade beef burger recipe gives you delicious patties.",
-    href: "#",
-  },
-  {
-    title: "The Chocolate Cake",
-    picture:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.6&w=256&h=256&q=80",
-    desc: "The classic burger is an all time BBQ favourite! This super easy homemade beef burger recipe gives you delicious patties.",
-    href: "#",
-  },
-  {
-    title: "The Chocolate Cake",
-    picture:
-      "https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.6&w=256&h=256&q=80",
-    desc: "The classic burger is an all time BBQ favourite! This super easy homemade beef burger recipe gives you delicious patties.",
-    href: "#",
-  },
-];
+import RecipeCard from "./RecipeCard";
+import { getSavedRecipes } from "../../redux/actions/user";
 
 export default function SavedRecipes() {
+  const dispatch = useDispatch();
+
+  const { user, savedRecipes } = useSelector((state) => state.user);
+
+  useEffect(() => {
+    dispatch(getSavedRecipes(user.id));
+  }, []);
+
+  if (!savedRecipes)
+    return (
+      <div className="px-4 py-8 mx-auto sm:max-w-xl md:max-w-full lg:max-w-screen-xl md:px-24 lg:px-8 lg:py-15">
+        <p className="text-3xl text-center text-gray-700">
+          Can not find any recipes, sorry (:
+        </p>
+      </div>
+    );
+
   return (
     <>
       <div className="mt-8">
@@ -32,7 +29,7 @@ export default function SavedRecipes() {
           <h2 className="text-lg leading-6 font-medium text-gray-900">
             Saved Recipes
           </h2>
-          <RecipeCard recipes={recipes} quickview={false} />
+          <RecipeCard recipes={savedRecipes} quickview={false} />
         </div>
       </div>
     </>

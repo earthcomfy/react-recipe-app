@@ -11,6 +11,10 @@ import RecipeEdit from "./components/recipe/RecipeEdit";
 import WithPrivateRoute from "./utils/WithPrivateRoute";
 import Dashboard from "./components/layouts/Dashboard";
 
+import Profile from "./components/accounts/Profile";
+import MyRecipes from "./components/recipe/MyRecipes";
+import SavedRecipes from "./components/recipe/SavedRecipes";
+
 import ErrorDiv from "./components/layouts/ErrorDiv";
 
 export default function App() {
@@ -35,7 +39,12 @@ export default function App() {
         />
         <Route exact path="/recipe/create" element={<RecipeCreate />} />
         <Route exact path="/recipe/:id/edit" element={<RecipeEdit />} />
-        <Route exact path="/dashboard" element={<Dashboard />} />
+
+        <Route path="dashboard" element={<Dashboard />}>
+          <Route path="profile" element={<Profile />} />
+          <Route path="myRecipes" element={<MyRecipes />} />
+          <Route path="savedRecipes" element={<SavedRecipes />} />
+        </Route>
       </Routes>
     </Router>
   );

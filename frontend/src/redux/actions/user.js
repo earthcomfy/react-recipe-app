@@ -73,13 +73,11 @@ export const changePassword =
       });
   };
 
-export const getSavedRecipes = (user_id, id) => (dispatch, getState) => {
+export const getSavedRecipes = (user_id) => (dispatch, getState) => {
   dispatch({ type: RECIPE_LOADING });
 
-  const body = JSON.stringify({ id });
-
   axiosInstance
-    .get(`/user/profile/${user_id}/bookmarks/`, body, tokenConfig(getState))
+    .get(`/user/profile/${user_id}/bookmarks/`, tokenConfig(getState))
     .then((res) => {
       dispatch({
         type: GET_SAVED_RECIPES,

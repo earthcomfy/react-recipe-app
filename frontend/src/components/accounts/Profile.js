@@ -4,11 +4,13 @@ import { PencilIcon } from "@heroicons/react/solid";
 
 import { editUser, changePassword } from "../../redux/actions/user";
 
-export default function Profile({ user }) {
+export default function Profile() {
   const dispatch = useDispatch();
 
-  const [username, setUsername] = useState(user && user.username);
-  const [email, setEmail] = useState(user && user.email);
+  const { user } = useSelector((state) => state.user);
+
+  const [username, setUsername] = useState(user.username);
+  const [email, setEmail] = useState(user.email);
 
   const [opassword, setOpassword] = useState(null);
   const [npassword, setNpassword] = useState(null);
@@ -34,7 +36,7 @@ export default function Profile({ user }) {
                   required
                   className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                   placeholder="Username"
-                  defaultValue={user && user.username}
+                  defaultValue={user.username}
                   onChange={(e) => setUsername(e.target.value)}
                 />
               </div>
@@ -50,7 +52,7 @@ export default function Profile({ user }) {
                   required
                   className="appearance-none rounded-none relative block w-full px-3 py-2 border border-gray-300 placeholder-gray-500 text-gray-900 rounded-t-md focus:outline-none focus:ring-indigo-500 focus:border-indigo-500 focus:z-10 sm:text-sm"
                   placeholder="Email address"
-                  defaultValue={user && user.email}
+                  defaultValue={user.email}
                   onChange={(e) => setEmail(e.target.value)}
                 />
               </div>

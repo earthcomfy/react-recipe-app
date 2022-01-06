@@ -1,5 +1,6 @@
 import { Fragment, useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import { Link, Outlet } from "react-router-dom";
 import { Dialog, Transition } from "@headlessui/react";
 import {
   MenuAlt1Icon,
@@ -11,15 +12,17 @@ import {
 } from "@heroicons/react/outline";
 import { MailIcon } from "@heroicons/react/solid";
 
-import Profile from "../accounts/Profile";
-import MyRecipe from "../recipe/MyRecipes";
-import SavedRecipes from "../recipe/SavedRecipes";
 import { loadUser } from "../../redux/actions/user";
 
 const navigation = [
-  { name: "Profile", icon: UserIcon, current: true },
-  { name: "My Recipes", icon: MenuIcon, current: false },
-  { name: "Saved Recipes", icon: BookmarkIcon, current: false },
+  { name: "Profile", icon: UserIcon, to: "profile", current: true },
+  { name: "My Recipes", icon: MenuIcon, to: "myRecipes", current: false },
+  {
+    name: "Saved Recipes",
+    icon: BookmarkIcon,
+    to: "savedRecipes",
+    current: false,
+  },
 ];
 
 const secondaryNavigation = [{ name: "Logout", icon: LogoutIcon }];
@@ -30,8 +33,6 @@ function classNames(...classes) {
 
 export default function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
-
-  const [selected, setSelected] = useState("Profile");
 
   const dispatch = useDispatch();
 
@@ -107,17 +108,15 @@ export default function Dashboard() {
                 >
                   <div className="px-2 space-y-1">
                     {navigation.map((item) => (
-                      <button
+                      <Link
                         key={item.name}
+                        to={item.to}
                         className={classNames(
                           item.current
                             ? "bg-cyan-800 text-white"
                             : "text-cyan-100 hover:text-white hover:bg-cyan-600",
                           "group flex items-center w-full px-2 py-2 text-sm leading-6 font-medium rounded-md"
                         )}
-                        onClick={() => {
-                          setSelected(item.name);
-                        }}
                         aria-current={item.current ? "page" : undefined}
                       >
                         <item.icon
@@ -125,7 +124,7 @@ export default function Dashboard() {
                           aria-hidden="true"
                         />
                         {item.name}
-                      </button>
+                      </Link>
                     ))}
                   </div>
                   <div className="mt-6 pt-6">
@@ -170,17 +169,15 @@ export default function Dashboard() {
             >
               <div className="px-2 space-y-1">
                 {navigation.map((item) => (
-                  <button
+                  <Link
                     key={item.name}
+                    to={item.to}
                     className={classNames(
                       item.current
                         ? "bg-cyan-800 text-white"
                         : "text-cyan-100 hover:text-white hover:bg-cyan-600",
                       "group flex items-center w-full px-2 py-2 text-sm leading-6 font-medium rounded-md"
                     )}
-                    onClick={() => {
-                      setSelected(item.name);
-                    }}
                     aria-current={item.current ? "page" : undefined}
                   >
                     <item.icon
@@ -188,7 +185,7 @@ export default function Dashboard() {
                       aria-hidden="true"
                     />
                     {item.name}
-                  </button>
+                  </Link>
                 ))}
               </div>
               <div className="mt-6 pt-6">
@@ -248,9 +245,7 @@ export default function Dashboard() {
           </div>
           <main className="flex-1 pb-8">
             {/* Page header */}
-            {selected === "Profile" && <Profile user={user} />}
-            {selected === "My Recipes" && <MyRecipe />}
-            {selected === "Saved Recipes" && <SavedRecipes />}
+            <Outlet />
           </main>
         </div>
       </div>
