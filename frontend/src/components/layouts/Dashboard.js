@@ -71,7 +71,7 @@ export default function Dashboard() {
               leaveFrom="translate-x-0"
               leaveTo="-translate-x-full"
             >
-              <div className="relative flex-1 flex flex-col max-w-xs w-full pt-5 pb-4 bg-cyan-700">
+              <div className="relative flex-1 flex flex-col max-w-xs w-full pt-5 pb-4 bg-teal-700">
                 <Transition.Child
                   as={Fragment}
                   enter="ease-in-out duration-300"
@@ -98,12 +98,12 @@ export default function Dashboard() {
                 <div className="flex-shrink-0 flex items-center px-4">
                   <img
                     className="h-8 w-auto"
-                    src="https://tailwindui.com/img/logos/easywire-logo-cyan-300-mark-white-text.svg"
+                    src="https://tailwindui.com/img/logos/easywire-logo-teal-300-mark-white-text.svg"
                     alt="Easywire logo"
                   />
                 </div>
                 <nav
-                  className="mt-5 flex-shrink-0 h-full divide-y divide-cyan-800 overflow-y-auto"
+                  className="mt-5 flex-shrink-0 h-full divide-y divide-teal-800 overflow-y-auto"
                   aria-label="Sidebar"
                 >
                   <div className="px-2 space-y-1">
@@ -113,14 +113,14 @@ export default function Dashboard() {
                         to={item.to}
                         className={classNames(
                           item.current
-                            ? "bg-cyan-800 text-white"
-                            : "text-cyan-100 hover:text-white hover:bg-cyan-600",
+                            ? "bg-teal-800 text-white"
+                            : "text-teal-100 hover:text-white hover:bg-teal-600",
                           "group flex items-center w-full px-2 py-2 text-sm leading-6 font-medium rounded-md"
                         )}
                         aria-current={item.current ? "page" : undefined}
                       >
                         <item.icon
-                          className="mr-4 flex-shrink-0 h-6 w-6 text-cyan-200"
+                          className="mr-4 flex-shrink-0 h-6 w-6 text-teal-200"
                           aria-hidden="true"
                         />
                         {item.name}
@@ -132,10 +132,10 @@ export default function Dashboard() {
                       {secondaryNavigation.map((item) => (
                         <button
                           key={item.name}
-                          className="group flex items-center w-full px-2 py-2 text-base font-medium rounded-md text-cyan-100 hover:text-white hover:bg-cyan-600"
+                          className="group flex items-center w-full px-2 py-2 text-base font-medium rounded-md text-teal-100 hover:text-white hover:bg-teal-600"
                         >
                           <item.icon
-                            className="mr-4 h-6 w-6 text-cyan-200"
+                            className="mr-4 h-6 w-6 text-teal-200"
                             aria-hidden="true"
                           />
                           {item.name}
@@ -155,16 +155,16 @@ export default function Dashboard() {
         {/* Static sidebar for desktop */}
         <div className="hidden lg:flex lg:w-64 lg:flex-col lg:fixed lg:inset-y-0">
           {/* Sidebar component, swap this element with another sidebar if you like */}
-          <div className="flex flex-col flex-grow bg-cyan-700 pt-5 pb-4 overflow-y-auto">
+          <div className="flex flex-col flex-grow bg-teal-700 pt-5 pb-4 overflow-y-auto">
             <div className="flex items-center flex-shrink-0 px-4">
               <img
                 className="h-8 w-auto"
-                src="https://tailwindui.com/img/logos/easywire-logo-cyan-300-mark-white-text.svg"
+                src="https://tailwindui.com/img/logos/easywire-logo-teal-300-mark-white-text.svg"
                 alt="Easywire logo"
               />
             </div>
             <nav
-              className="mt-5 flex-1 flex flex-col divide-y divide-cyan-800 overflow-y-auto"
+              className="mt-5 flex-1 flex flex-col divide-y divide-teal-800 overflow-y-auto"
               aria-label="Sidebar"
             >
               <div className="px-2 space-y-1">
@@ -174,14 +174,14 @@ export default function Dashboard() {
                     to={item.to}
                     className={classNames(
                       item.current
-                        ? "bg-cyan-800 text-white"
-                        : "text-cyan-100 hover:text-white hover:bg-cyan-600",
+                        ? "bg-teal-800 text-white"
+                        : "text-teal-100 hover:text-white hover:bg-teal-600",
                       "group flex items-center w-full px-2 py-2 text-sm leading-6 font-medium rounded-md"
                     )}
                     aria-current={item.current ? "page" : undefined}
                   >
                     <item.icon
-                      className="mr-4 flex-shrink-0 h-6 w-6 text-cyan-200"
+                      className="mr-4 flex-shrink-0 h-6 w-6 text-teal-200"
                       aria-hidden="true"
                     />
                     {item.name}
@@ -193,10 +193,10 @@ export default function Dashboard() {
                   {secondaryNavigation.map((item) => (
                     <button
                       key={item.name}
-                      className="group flex items-center w-full px-2 py-2 text-sm leading-6 font-medium rounded-md text-cyan-100 hover:text-white hover:bg-cyan-600"
+                      className="group flex items-center w-full px-2 py-2 text-sm leading-6 font-medium rounded-md text-teal-100 hover:text-white hover:bg-teal-600"
                     >
                       <item.icon
-                        className="mr-4 h-6 w-6 text-cyan-200"
+                        className="mr-4 h-6 w-6 text-teal-200"
                         aria-hidden="true"
                       />
                       {item.name}
@@ -212,7 +212,7 @@ export default function Dashboard() {
           <div className="relative z-10 flex-shrink-0 flex items-center bg-white border-b border-gray-200 lg:border-none">
             <button
               type="button"
-              className="px-4 border-r border-gray-200 text-gray-400 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-cyan-500 lg:hidden"
+              className="px-4 border-r border-gray-200 text-gray-400 focus:outline-none focus:ring-2 focus:ring-inset focus:ring-teal-500 lg:hidden"
               onClick={() => setSidebarOpen(true)}
             >
               <span className="sr-only">Open sidebar</span>
@@ -227,11 +227,11 @@ export default function Dashboard() {
               <div>
                 <div className="flex items-center">
                   <h1 className="ml-3 text-2xl font-bold leading-7 text-gray-900 sm:leading-9 sm:truncate">
-                    Good morning, {user && user.username}
+                    Welcome back, {user && user.username}
                   </h1>
                 </div>
                 <dl className="flex flex-col ml-3 sm:mt-1 sm:flex-row sm:flex-wrap">
-                  <dt className="sr-only">Company</dt>
+                  <dt className="sr-only">Email</dt>
                   <dd className="flex items-center text-sm text-gray-500 font-medium sm:mr-6">
                     <MailIcon
                       className="flex-shrink-0 mr-1.5 h-5 w-5 text-gray-400"

@@ -9,19 +9,21 @@ const categories = [
   {
     id: 1,
     title: "Appetizer",
-    description: "Appetizer Appetizer Appetizer Appetizer Appetizer",
+    description:
+      "While eating your appetizer, don't be concerned with dessert. ",
     users: "50 recipes",
   },
   {
     id: 2,
     title: "Dessert",
-    description: "Dessert Dessert Dessert Dessert Dessert Dessert",
+    description:
+      "You can’t buy happiness, but you can buy dessert :) same thing.",
     users: "100 recipes",
   },
   {
     id: 3,
     title: "Main Dish",
-    description: "Main Dish Main Dish Main Dish Main Dish Main Dish",
+    description: "I am not an encore, not a pudding, I am the main dish.",
     users: "270 recipes",
   },
 ];
@@ -55,7 +57,7 @@ export default function Category({ editMode, recipe }) {
             className={({ checked, active }) =>
               classNames(
                 checked ? "border-transparent" : "border-gray-300",
-                active ? "ring-2 ring-indigo-500" : "",
+                active ? "ring-2 ring-teal-500" : "",
                 "relative bg-white border rounded-lg shadow-sm p-4 flex cursor-pointer focus:outline-none"
               )
             }
@@ -87,14 +89,14 @@ export default function Category({ editMode, recipe }) {
                 <CheckCircleIcon
                   className={classNames(
                     !checked ? "invisible" : "",
-                    "h-5 w-5 text-indigo-600"
+                    "h-5 w-5 text-teal-600"
                   )}
                   aria-hidden="true"
                 />
                 <div
                   className={classNames(
                     active ? "border" : "border-2",
-                    checked ? "border-indigo-500" : "border-transparent",
+                    checked ? "border-teal-500" : "border-transparent",
                     "absolute -inset-px rounded-lg pointer-events-none"
                   )}
                   aria-hidden="true"

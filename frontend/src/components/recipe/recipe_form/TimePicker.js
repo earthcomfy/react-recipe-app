@@ -27,7 +27,7 @@ export default function TimePicker({ editMode, recipe }) {
       <p className="mt-1 text-sm text-gray-500">
         How long is it going to take to cook?
       </p>
-      <div class="mt-1 block p-1 w-40 shadow-sm focus:ring-indigo-500 focus:border-indigo-500 sm:text-sm border border-gray-300 rounded-md">
+      <div class="mt-1 block p-1 w-40 shadow-sm focus:ring-teal-500 focus:border-teal-500 sm:text-sm border border-gray-300 rounded-md">
         <div class="flex">
           <select
             name="hours"

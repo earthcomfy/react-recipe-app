@@ -47,7 +47,7 @@ export default function Ingredients({ editMode, recipe }) {
           Ingredients
         </h1>
         <p className="mt-1 text-sm text-gray-500">
-          Add ingredients necessary for your recipe.
+          Add the necessary ingredients for your recipe.
         </p>
       </div>
 
@@ -120,7 +120,7 @@ export default function Ingredients({ editMode, recipe }) {
                       type="text"
                       name="add-ingredients"
                       id="add-ingredients"
-                      className="block shadow-sm focus:ring-sky-500 focus:border-sky-500 sm:text-sm pt-5 text-lg border-gray-300 rounded-md"
+                      className="block shadow-sm p-2 focus:ring-sky-500 focus:border-sky-500 sm:text-sm text-lg border-gray-300 rounded-md"
                       placeholder="Enter an ingredient"
                       aria-describedby="add-ingredients"
                       ref={textInput}

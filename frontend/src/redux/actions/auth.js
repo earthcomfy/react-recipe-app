@@ -10,7 +10,7 @@ import {
 import axiosInstance from "../../utils/axios";
 
 export const register =
-  ({ username, email, password }) =>
+  ({ username, email, password, confirmPassword }) =>
   (dispatch) => {
     const config = {
       headers: {
@@ -18,29 +18,43 @@ export const register =
       },
     };
 
-    const body = JSON.stringify({ username, email, password });
-
-    axiosInstance
-      .post("/user/register/", body, config)
-      .then((res) => {
-        dispatch({
-          type: REGISTER_SUCCESS,
-          payload: res.data,
-        });
-        dispatch({
-          type: CLEAR_MESSAGE,
-          payload: res.data,
-        });
-      })
-      .catch((err) => {
-        dispatch({
-          type: GET_ERRORS,
-          payload: err.response,
-        });
-        dispatch({
-          type: REGISTER_FAIL,
-        });
+    if (password === confirmPassword) {
+      const body = JSON.stringify({
+        username,
+        email,
+        password,
       });
+
+      axiosInstance
+        .post("/user/register/", body, config)
+        .then((res) => {
+          dispatch({
+            type: REGISTER_SUCCESS,
+            payload: res.data,
+          });
+          dispatch({
+            type: CLEAR_MESSAGE,
+            payload: res.data,
+          });
+        })
+        .catch((err) => {
+          dispatch({
+            type: GET_ERRORS,
+            payload: err.response,
+          });
+          dispatch({
+            type: REGISTER_FAIL,
+          });
+        });
+    } else {
+      dispatch({
+        type: GET_ERRORS,
+        payload: {
+          data: { password: ["Passwords Must Match"] },
+          status: null,
+        },
+      });
+    }
   };
 
 export const login =

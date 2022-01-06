@@ -52,7 +52,7 @@ export default function RecipeCard({ recipes, quickview }) {
               <div className="text-sm">
                 {quickview ? (
                   <button
-                    className="font-medium text-cyan-700 hover:text-cyan-900"
+                    className="font-medium text-teal-700 hover:text-teal-900"
                     onClick={() => {
                       setOpen(true);
                       setId(recipe.id);
@@ -63,7 +63,7 @@ export default function RecipeCard({ recipes, quickview }) {
                 ) : (
                   <Link
                     to={`/recipe/${recipe.id}`}
-                    className="font-medium text-cyan-700 hover:text-cyan-900"
+                    className="font-medium text-teal-700 hover:text-teal-900"
                   >
                     View detail
                   </Link>

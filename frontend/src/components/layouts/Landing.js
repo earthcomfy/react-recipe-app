@@ -9,7 +9,7 @@ export default function Landing() {
           <div>
             <Link
               to="/recipe"
-              className="inline-block px-3 py-px mb-4 text-xs font-semibold tracking-wider text-white uppercase rounded-full bg-indigo-600"
+              className="inline-block px-3 py-px mb-4 text-xs font-semibold tracking-wider text-white uppercase rounded-full bg-teal-600"
             >
               Explore
             </Link>
@@ -38,48 +38,18 @@ export default function Landing() {
                   height="24"
                 />
               </svg>
-              <span className="relative">The</span>
+              <span className="relative">Share</span>
             </span>{" "}
-            quick, brown fox jumps over a lazy dog
+            your recipes to the world.
           </h2>
           <p className="text-base text-gray-700 md:text-lg">
-            Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-            accusantium doloremque rem aperiam, eaque ipsa quae.
+            Like to try out new foods? Have a recipe that you would like to
+            share to the world? Great! Start your journey here ...
           </p>
         </div>
         <div className="grid gap-8 row-gap-10 lg:grid-cols-2">
           <div className="max-w-md sm:mx-auto sm:text-center">
-            <div className="flex items-center justify-center w-16 h-16 mb-4 rounded-full bg-indigo-50 sm:mx-auto sm:w-24 sm:h-24">
-              <svg
-                className="w-12 h-12 text-deep-purple-accent-400 sm:w-16 sm:h-16"
-                stroke="currentColor"
-                viewBox="0 0 52 52"
-              >
-                <polygon
-                  strokeWidth="3"
-                  strokeLinecap="round"
-                  strokeLinejoin="round"
-                  fill="none"
-                  points="29 13 14 29 25 29 23 39 38 23 27 23"
-                />
-              </svg>
-            </div>
-            <h6 className="mb-3 text-xl font-bold leading-5">The deep ocean</h6>
-            <p className="mb-3 text-sm text-gray-900">
-              A flower in my garden, a mystery in my panties. Heart attack never
-              stopped old Big Bear. I didn't even know we were calling him Big
-              Bear. We never had the chance to.
-            </p>
-            <a
-              href="/"
-              aria-label=""
-              className="inline-flex items-center font-semibold transition-colors duration-200 text-indigo-600 hover:text-indigo-700"
-            >
-              Learn more
-            </a>
-          </div>
-          <div className="max-w-md sm:mx-auto sm:text-center">
-            <div className="flex items-center justify-center w-16 h-16 mb-4 rounded-full bg-indigo-50 sm:mx-auto sm:w-24 sm:h-24">
+            <div className="flex items-center justify-center w-16 h-16 mb-4 rounded-full bg-teal-50 sm:mx-auto sm:w-24 sm:h-24">
               <svg
                 className="w-12 h-12 text-deep-purple-accent-400 sm:w-16 sm:h-16"
                 stroke="currentColor"
@@ -95,24 +65,16 @@ export default function Landing() {
               </svg>
             </div>
             <h6 className="mb-3 text-xl font-bold leading-5">
-              When has justice
+              Create a recipe
             </h6>
             <p className="mb-3 text-sm text-gray-900">
-              Rough pomfret lemon shark plownose chimaera southern sandfish
-              kokanee northern sea robin Antarctic cod. Yellow-and-black
-              triplefin gulper South American Lungfish mahi-mahi, butterflyfish
-              glass catfish soapfish ling gray mullet!
+              Mix together 1 large smile, 2 cups of sweetness and positivity , A
+              good sense of humour, 1 cup of self esteem AND a heart full of
+              love and share it to the world.
             </p>
-            <a
-              href="/"
-              aria-label=""
-              className="inline-flex items-center font-semibold transition-colors duration-200 text-deep-purple-accent-400 hover:text-deep-purple-800"
-            >
-              Learn more
-            </a>
           </div>
           <div className="max-w-md sm:mx-auto sm:text-center">
-            <div className="flex items-center justify-center w-16 h-16 mb-4 rounded-full bg-indigo-50 sm:mx-auto sm:w-24 sm:h-24">
+            <div className="flex items-center justify-center w-16 h-16 mb-4 rounded-full bg-teal-50 sm:mx-auto sm:w-24 sm:h-24">
               <svg
                 className="w-12 h-12 text-deep-purple-accent-400 sm:w-16 sm:h-16"
                 stroke="currentColor"
@@ -128,24 +90,17 @@ export default function Landing() {
               </svg>
             </div>
             <h6 className="mb-3 text-xl font-bold leading-5">
-              Organically grow
+              Get other people's recipes
             </h6>
             <p className="mb-3 text-sm text-gray-900">
-              A slice of heaven. O for awesome, this chocka full cuzzie is as
-              rip-off as a cracker. Meanwhile, in behind the bicycle shed,
-              Hercules Morse, as big as a horse and Mrs Falani were up to no
-              good with a bunch of crook pikelets.
+              Food for us comes from our relatives, whether they have wings or
+              fins or roots. That is how we consider food. Food has a culture.
+              It has a history. It has a story. It has relationships. Discover
+              now!
             </p>
-            <a
-              href="/"
-              aria-label=""
-              className="inline-flex items-center font-semibold transition-colors duration-200 text-deep-purple-accent-400 hover:text-deep-purple-800"
-            >
-              Learn more
-            </a>
           </div>
           <div className="max-w-md sm:mx-auto sm:text-center">
-            <div className="flex items-center justify-center w-16 h-16 mb-4 rounded-full bg-indigo-50 sm:mx-auto sm:w-24 sm:h-24">
+            <div className="flex items-center justify-center w-16 h-16 mb-4 rounded-full bg-teal-50 sm:mx-auto sm:w-24 sm:h-24">
               <svg
                 className="w-12 h-12 text-deep-purple-accent-400 sm:w-16 sm:h-16"
                 stroke="currentColor"
@@ -160,22 +115,34 @@ export default function Landing() {
                 />
               </svg>
             </div>
-            <h6 className="mb-3 text-xl font-bold leading-5">
-              A slice of heaven
-            </h6>
+            <h6 className="mb-3 text-xl font-bold leading-5">Like a recipe</h6>
             <p className="mb-3 text-sm text-gray-900">
-              Disrupt inspire and think tank, social entrepreneur but
-              preliminary thinking think tank compelling. Inspiring, invest
-              synergy capacity building, white paper; silo, unprecedented
-              challenge B-corp problem-solvers.
+              This magical, marvelous food on our plate, this sustenance we
+              absorb, has a story to tell. It has a journey. It leaves a
+              footprint. It leaves a legacy.
             </p>
-            <a
-              href="/"
-              aria-label=""
-              className="inline-flex items-center font-semibold transition-colors duration-200 text-deep-purple-accent-400 hover:text-deep-purple-800"
-            >
-              Learn more
-            </a>
+          </div>
+          <div className="max-w-md sm:mx-auto sm:text-center">
+            <div className="flex items-center justify-center w-16 h-16 mb-4 rounded-full bg-teal-50 sm:mx-auto sm:w-24 sm:h-24">
+              <svg
+                className="w-12 h-12 text-deep-purple-accent-400 sm:w-16 sm:h-16"
+                stroke="currentColor"
+                viewBox="0 0 52 52"
+              >
+                <polygon
+                  strokeWidth="3"
+                  strokeLinecap="round"
+                  strokeLinejoin="round"
+                  fill="none"
+                  points="29 13 14 29 25 29 23 39 38 23 27 23"
+                />
+              </svg>
+            </div>
+            <h6 className="mb-3 text-xl font-bold leading-5">Save a recipe</h6>
+            <p className="mb-3 text-sm text-gray-900">
+              Save your favorite recipes. A recipe has no soul. You as the cook
+              must bring soul to the recipe.
+            </p>
           </div>
         </div>
       </div>

@@ -37,12 +37,13 @@ export default function RecipeCreate(props) {
         <div className="md:grid md:grid-cols-3 md:gap-6">
           <div className="md:col-span-1">
             <div className="px-4 sm:px-0">
-              <h3 className="text-lg font-medium leading-6 text-gray-900">
-                Recipe Form
+              <h3 className="p-5 text-lg font-medium leading-6 text-gray-900">
+                Create your recipe and share it to the world!
               </h3>
-              <p className="mt-1 text-sm text-gray-600">
-                This information will be displayed publicly so be careful what
-                you share.
+              <p className="px-5 text-sm text-gray-600">
+                "Cooking is like painting or writing a song. Just as there are
+                only so many notes or colors, there are only so many
+                flavors—it’s how you combine them that sets you apart."
               </p>
             </div>
           </div>
@@ -58,8 +59,8 @@ export default function RecipeCreate(props) {
                       type="text"
                       name="title"
                       id="title"
-                      className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full rounded-md pt-2.5"
-                      placeholder="Write a title..."
+                      className="shadow-sm p-2 focus:ring-teal-500 focus:border-teal-500 mt-1 block w-full rounded-md pt-2.5"
+                      placeholder="Write a title for your recipe. Something catchy ..."
                       defaultValue={
                         props.editMode ? props.recipe[0].title : null
                       }
@@ -75,7 +76,7 @@ export default function RecipeCreate(props) {
                         id="desc"
                         name="desc"
                         rows={3}
-                        className="shadow-sm focus:ring-indigo-500 focus:border-indigo-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"
+                        className="shadow-sm p-2 focus:ring-teal-500 focus:border-teal-500 mt-1 block w-full sm:text-sm border border-gray-300 rounded-md"
                         placeholder="Write a short description..."
                         defaultValue={
                           props.editMode ? props.recipe[0].desc : null
@@ -99,7 +100,7 @@ export default function RecipeCreate(props) {
                 <div className="px-4 py-3 bg-gray-50 text-right sm:px-6">
                   <button
                     type="submit"
-                    className="inline-flex justify-center py-2 px-4 border border-transparent shadow-sm text-sm font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                    className="w-full bg-teal-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-cyan-500"
                   >
                     {props.buttonLabel}
                   </button>

@@ -94,7 +94,7 @@ export default function QuickView({ open, setOpen, id }) {
                         <h3 id="information-heading" className="sr-only">
                           Recipe information
                         </h3>
-                        <span className="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-gray-100 text-cyan-600 ">
+                        <span className="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-gray-100 text-teal-600 ">
                           {recipe[0].category.name}
                         </span>
 
@@ -149,8 +149,8 @@ export default function QuickView({ open, setOpen, id }) {
                         </div>
 
                         <div className="flex justify-between">
-                          <div className="inline-flex items-center text-cyan-600 border py-1 px-2 mt-3 border-transparent bg-cyan-50 rounded-md">
-                            <ClockIcon className="h-8 w-8 text-cyan-600 pr-1" />{" "}
+                          <div className="inline-flex items-center text-teal-600 border py-1 px-2 mt-3 border-transparent bg-teal-50 rounded-md">
+                            <ClockIcon className="h-8 w-8 text-teal-600 pr-1" />{" "}
                             <span className="font-medium">
                               {recipe[0].cook_time}
                             </span>
@@ -163,11 +163,11 @@ export default function QuickView({ open, setOpen, id }) {
                         <div className="mt-6">
                           <Link
                             to={`/recipe/${id}`}
-                            className="font-medium text-cyan-600 hover:text-cyan-500"
+                            className="font-medium text-teal-600 hover:text-teal-500"
                           >
                             <button
                               type="submit"
-                              className="w-full bg-cyan-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-cyan-500"
+                              className="w-full bg-teal-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-teal-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-cyan-500"
                             >
                               View Full Detail
                             </button>

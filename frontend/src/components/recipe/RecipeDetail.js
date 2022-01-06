@@ -119,7 +119,7 @@ export default function RecipeDetail() {
 
                 <div className="mt-3">
                   <h2 className="sr-only">Recipe information</h2>
-                  <span className="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-gray-100 text-cyan-600 ">
+                  <span className="inline-flex items-center px-3 py-0.5 rounded-full text-sm font-medium bg-gray-100 text-teal-600 ">
                     {detailRecipe.category.name}
                   </span>
                 </div>
@@ -165,8 +165,8 @@ export default function RecipeDetail() {
                   </button>
                 </div>
 
-                <div className="inline-flex items-center text-cyan-600 border py-1 px-2 mt-3 border-transparent bg-cyan-50 rounded-md">
-                  <ClockIcon className="h-8 w-8 text-cyan-600 pr-1" />{" "}
+                <div className="inline-flex items-center text-teal-600 border py-1 px-2 mt-3 border-transparent bg-teal-50 rounded-md">
+                  <ClockIcon className="h-8 w-8 text-teal-600 pr-1" />{" "}
                   <span className="font-medium">{detailRecipe.cook_time}</span>
                 </div>
 
@@ -183,7 +183,7 @@ export default function RecipeDetail() {
                               <Disclosure.Button className="group relative w-full py-6 flex justify-between items-center text-left">
                                 <span
                                   className={classNames(
-                                    open ? "text-indigo-600" : "text-gray-900",
+                                    open ? "text-teal-600" : "text-gray-900",
                                     "text-base font-medium"
                                   )}
                                 >
@@ -192,7 +192,7 @@ export default function RecipeDetail() {
                                 <span className="ml-6 flex items-center">
                                   {open ? (
                                     <MinusSmIcon
-                                      className="block h-6 w-6 text-indigo-400 group-hover:text-indigo-500"
+                                      className="block h-6 w-6 text-teal-400 group-hover:text-teal-500"
                                       aria-hidden="true"
                                     />
                                   ) : (
