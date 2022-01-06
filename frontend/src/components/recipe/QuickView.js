@@ -3,7 +3,12 @@ import { useSelector, useDispatch } from "react-redux";
 import { Link } from "react-router-dom";
 
 import { Dialog, Transition } from "@headlessui/react";
-import { XIcon, HeartIcon, BookmarkIcon } from "@heroicons/react/outline";
+import {
+  XIcon,
+  HeartIcon,
+  BookmarkIcon,
+  ClockIcon,
+} from "@heroicons/react/outline";
 
 import { likeRecipe, saveRecipe } from "../../redux/actions/recipes";
 
@@ -104,60 +109,70 @@ export default function QuickView({ open, setOpen, id }) {
 
                       <section
                         aria-labelledby="options-heading"
-                        className="mt-6"
+                        className="mt-2"
                       >
-                        <form>
-                          <div className="flex sm:flex-col1">
-                            <button
-                              type="button"
-                              className="group ml-4 py-3 px-3 rounded-md flex items-center justify-center text-gray-400 hover:bg-gray-100 hover:text-gray-500"
-                              onClick={() => {
-                                dispatch(saveRecipe(recipe[0].author, id));
-                                setBookmark(bookmark + 1);
-                              }}
-                            >
-                              <BookmarkIcon
-                                className="h-6 w-6 flex-shrink-0"
-                                aria-hidden="true"
-                              />
-                              <p className="hidden ml-1 group-hover:block">
-                                Save
-                              </p>
-                              <span className="ml-2">{bookmark}</span>
-                            </button>
-                            <button
-                              type="button"
-                              className="group ml-4 py-3 px-3 rounded-md flex items-center justify-center text-gray-400 hover:bg-gray-100 hover:text-gray-500"
-                              onClick={() => {
-                                dispatch(likeRecipe(id));
-                                setLike(like + 1);
-                              }}
-                            >
-                              <HeartIcon
-                                className="h-6 w-6 flex-shrink-0"
-                                aria-hidden="true"
-                              />
-                              <p className="hidden ml-1 group-hover:block">
-                                Like
-                              </p>
-                              <span className="ml-2">{like}</span>
-                            </button>
-                          </div>
+                        <div className="flex sm:flex-col1">
+                          <button
+                            type="button"
+                            className="group py-3 px-3 rounded-md flex items-center justify-center text-gray-400 hover:bg-gray-100 hover:text-gray-500"
+                            onClick={() => {
+                              dispatch(saveRecipe(recipe[0].author, id));
+                              setBookmark(bookmark + 1);
+                            }}
+                          >
+                            <BookmarkIcon
+                              className="h-6 w-6 flex-shrink-0"
+                              aria-hidden="true"
+                            />
+                            <p className="hidden ml-1 group-hover:block">
+                              Save
+                            </p>
+                            <span className="ml-2">{bookmark}</span>
+                          </button>
+                          <button
+                            type="button"
+                            className="group py-3 px-3 rounded-md flex items-center justify-center text-gray-400 hover:bg-gray-100 hover:text-gray-500"
+                            onClick={() => {
+                              dispatch(likeRecipe(id));
+                              setLike(like + 1);
+                            }}
+                          >
+                            <HeartIcon
+                              className="h-6 w-6 flex-shrink-0"
+                              aria-hidden="true"
+                            />
+                            <p className="hidden ml-1 group-hover:block">
+                              Like
+                            </p>
+                            <span className="ml-2">{like}</span>
+                          </button>
+                        </div>
 
-                          <div className="mt-6">
-                            <Link
-                              to={`/recipe/${id}`}
-                              className="font-medium text-cyan-600 hover:text-cyan-500"
-                            >
-                              <button
-                                type="submit"
-                                className="w-full bg-cyan-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-cyan-500"
-                              >
-                                View Full Detail
-                              </button>
-                            </Link>
+                        <div className="flex justify-between">
+                          <div className="inline-flex items-center text-cyan-600 border py-1 px-2 mt-3 border-transparent bg-cyan-50 rounded-md">
+                            <ClockIcon className="h-8 w-8 text-cyan-600 pr-1" />{" "}
+                            <span className="font-medium">
+                              {recipe[0].cook_time}
+                            </span>
                           </div>
-                        </form>
+                          <p className="mt-8 text-sm font-weight text-gray-500 truncate">
+                            by {recipe[0].username}
+                          </p>
+                        </div>
+
+                        <div className="mt-6">
+                          <Link
+                            to={`/recipe/${id}`}
+                            className="font-medium text-cyan-600 hover:text-cyan-500"
+                          >
+                            <button
+                              type="submit"
+                              className="w-full bg-cyan-600 border border-transparent rounded-md py-3 px-8 flex items-center justify-center text-base font-medium text-white hover:bg-cyan-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-offset-gray-50 focus:ring-cyan-500"
+                            >
+                              View Full Detail
+                            </button>
+                          </Link>
+                        </div>
                       </section>
                     </div>
                   </div>
