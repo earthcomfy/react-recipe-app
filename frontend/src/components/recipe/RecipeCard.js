@@ -1,5 +1,6 @@
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
+import { Link } from "react-router-dom";
 import { HeartIcon, BookmarkIcon } from "@heroicons/react/outline";
 import { likeRecipe, saveRecipe } from "../../redux/actions/recipes";
 
@@ -60,12 +61,12 @@ export default function RecipeCard({ recipes, quickview }) {
                     Quick View
                   </button>
                 ) : (
-                  <a
-                    href={recipe.href}
+                  <Link
+                    to={`/recipe/${recipe.id}`}
                     className="font-medium text-cyan-700 hover:text-cyan-900"
                   >
                     View detail
-                  </a>
+                  </Link>
                 )}
               </div>
 
