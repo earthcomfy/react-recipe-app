@@ -1,11 +1,15 @@
 import { useState } from "react";
+import { useSelector, useDispatch } from "react-redux";
 import { HeartIcon, BookmarkIcon } from "@heroicons/react/outline";
+import { likeRecipe, saveRecipe } from "../../redux/actions/recipes";
 
 import QuickView from "./QuickView";
 
 export default function RecipeCard({ recipes, quickview }) {
   const [open, setOpen] = useState(false);
   const [id, setId] = useState(null);
+
+  const dispatch = useDispatch();
 
   return (
     <>
@@ -70,6 +74,9 @@ export default function RecipeCard({ recipes, quickview }) {
                   <HeartIcon
                     className="h-6 w-6 text-gray-400 "
                     aria-hidden="true"
+                    onClick={() => {
+                      dispatch(likeRecipe(id));
+                    }}
                   />
                 </button>
 
@@ -78,6 +85,9 @@ export default function RecipeCard({ recipes, quickview }) {
                   <BookmarkIcon
                     className="h-6 w-6 text-gray-400"
                     aria-hidden="true"
+                    onClick={() => {
+                      dispatch(saveRecipe(recipe.author, id));
+                    }}
                   />
                 </button>
               </div>
