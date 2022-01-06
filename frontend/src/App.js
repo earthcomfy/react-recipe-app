@@ -37,10 +37,33 @@ export default function App() {
             </WithPrivateRoute>
           }
         />
-        <Route exact path="/recipe/create" element={<RecipeCreate />} />
-        <Route exact path="/recipe/:id/edit" element={<RecipeEdit />} />
+        <Route
+          exact
+          path="/recipe/create"
+          element={
+            <WithPrivateRoute>
+              <RecipeCreate />
+            </WithPrivateRoute>
+          }
+        />
+        <Route
+          exact
+          path="/recipe/:id/edit"
+          element={
+            <WithPrivateRoute>
+              <RecipeEdit />
+            </WithPrivateRoute>
+          }
+        />
 
-        <Route path="dashboard" element={<Dashboard />}>
+        <Route
+          path="dashboard"
+          element={
+            <WithPrivateRoute>
+              <Dashboard />
+            </WithPrivateRoute>
+          }
+        >
           <Route path="profile" element={<Profile />} />
           <Route path="myRecipes" element={<MyRecipes />} />
           <Route path="savedRecipes" element={<SavedRecipes />} />

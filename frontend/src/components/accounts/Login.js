@@ -44,7 +44,6 @@ export default function Login() {
               Login to your account
             </h2>
           </div>
-          {msg && console.log(msg)}
           <form className="mt-8 space-y-6" onSubmit={handleFormSubmit}>
             <div className="rounded-md shadow-sm -space-y-px">
               <div>

@@ -47,7 +47,6 @@ export default function Register() {
               Register to your account
             </h2>
           </div>
-          {msg && console.log(msg)}
           <form className="mt-8 space-y-6" onSubmit={handleFormSubmit}>
             <input type="hidden" name="remember" defaultValue="true" />
             <div className="rounded-md shadow-sm -space-y-px">
