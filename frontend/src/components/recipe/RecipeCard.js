@@ -97,7 +97,7 @@ export default function RecipeCard({ recipes, quickview }) {
         ))}
       </div>
       {/* Pagination */}
-      <nav
+      {/* <nav
         className="bg-white mt-10 px-4 pt-3 flex items-center justify-between border-t border-gray-200 sm:px-6"
         aria-label="Pagination"
       >
@@ -122,7 +122,7 @@ export default function RecipeCard({ recipes, quickview }) {
             Next
           </a>
         </div>
-      </nav>
+      </nav> */}
       {open && <QuickView open={open} setOpen={setOpen} id={id} />}
     </>
   );
