@@ -52,13 +52,13 @@ export const editUser = (username, email) => (dispatch, getState) => {
 };
 
 export const changePassword =
-  (user_id, old_password, new_password) => (dispatch, getState) => {
+  (old_password, new_password) => (dispatch, getState) => {
     dispatch({ type: USER_LOADING });
 
     const body = JSON.stringify({ old_password, new_password });
 
     axiosInstance
-      .put(`/user/${user_id}/password/change/`, body, tokenConfig(getState))
+      .put("/user/password/change/", body, tokenConfig(getState))
       .then((res) => {
         dispatch({
           type: CHANGE_PASSWORD,
