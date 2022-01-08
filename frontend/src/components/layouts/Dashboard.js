@@ -12,8 +12,6 @@ import {
 } from "@heroicons/react/outline";
 import { MailIcon } from "@heroicons/react/solid";
 
-import { loadUser, getAvatar, changeAvatar } from "../../redux/actions/user";
-
 const navigation = [
   { name: "Profile", icon: UserIcon, to: "profile", current: true },
   { name: "My Recipes", icon: MenuIcon, to: "myRecipes", current: false },
@@ -34,14 +32,7 @@ function classNames(...classes) {
 export default function Dashboard() {
   const [sidebarOpen, setSidebarOpen] = useState(false);
 
-  const dispatch = useDispatch();
-
   const { user, avatar } = useSelector((state) => state.user);
-
-  useEffect(() => {
-    dispatch(loadUser());
-    dispatch(getAvatar());
-  }, []);
 
   return (
     <>

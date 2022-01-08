@@ -1,12 +1,13 @@
 import { Fragment, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import { Menu, Popover, Transition } from "@headlessui/react";
 import { SearchIcon } from "@heroicons/react/solid";
 import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
 
 import Logout from "../accounts/Logout";
+import { loadUser, getAvatar } from "../../redux/actions/user";
 
 const userNavigation = [{ name: "Dashboard", to: "/dashboard" }];
 
@@ -19,6 +20,15 @@ export default function Header() {
   const { user, avatar } = useSelector((state) => state.user);
 
   const [modal, setModal] = useState(false);
+
+  const dispatch = useDispatch();
+
+  useEffect(() => {
+    if (token) {
+      dispatch(loadUser());
+      dispatch(getAvatar());
+    }
+  }, []);
 
   return (
     <>
@@ -99,7 +109,7 @@ export default function Header() {
                           <span className="sr-only">Open user menu</span>
                           <img
                             className="h-8 w-8 rounded-full"
-                            src={avatar.avatar}
+                            src={avatar && avatar.avatar}
                             alt=""
                           />
                         </Menu.Button>
@@ -218,16 +228,16 @@ export default function Header() {
                     <div className="flex-shrink-0">
                       <img
                         className="h-10 w-10 rounded-full"
-                        src={avatar.avatar}
+                        src={avatar && avatar.avatar}
                         alt=""
                       />
                     </div>
                     <div className="ml-3">
                       <div className="text-base font-medium text-gray-800">
-                        {user.name}
+                        {user && user.username}
                       </div>
                       <div className="text-sm font-medium text-gray-500">
-                        {user.email}
+                        {user && user.email}
                       </div>
                     </div>
                     {/* <button
