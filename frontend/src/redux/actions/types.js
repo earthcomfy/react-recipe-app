@@ -30,3 +30,5 @@ export const EDIT_USER = "EDIT_USER";
 export const CHANGE_PASSWORD = "CHANGE_PASSWORD";
 export const GET_SAVED_RECIPES = "GET_SAVED_RECIPES";
 export const GET_USER_RECIPES = "GET_USER_RECIPES";
+export const GET_AVATAR = "GET_AVATAR";
+export const CHANGE_AVATAR = "CHANGE_AVATAR";

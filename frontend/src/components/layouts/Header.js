@@ -1,4 +1,4 @@
-import { Fragment, useState } from "react";
+import { Fragment, useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 
@@ -8,12 +8,6 @@ import { BellIcon, MenuIcon, XIcon } from "@heroicons/react/outline";
 
 import Logout from "../accounts/Logout";
 
-const user = {
-  name: "Chelsea Hagon",
-  email: "chelseahagon@example.com",
-  imageUrl:
-    "https://images.unsplash.com/photo-1550525811-e5869dd03032?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2&w=256&h=256&q=80",
-};
 const userNavigation = [{ name: "Dashboard", to: "/dashboard" }];
 
 function classNames(...classes) {
@@ -22,6 +16,8 @@ function classNames(...classes) {
 
 export default function Header() {
   const { token } = useSelector((state) => state.auth);
+  const { user, avatar } = useSelector((state) => state.user);
+
   const [modal, setModal] = useState(false);
 
   return (
@@ -103,7 +99,7 @@ export default function Header() {
                           <span className="sr-only">Open user menu</span>
                           <img
                             className="h-8 w-8 rounded-full"
-                            src={user.imageUrl}
+                            src={avatar.avatar}
                             alt=""
                           />
                         </Menu.Button>
@@ -222,7 +218,7 @@ export default function Header() {
                     <div className="flex-shrink-0">
                       <img
                         className="h-10 w-10 rounded-full"
-                        src={user.imageUrl}
+                        src={avatar.avatar}
                         alt=""
                       />
                     </div>

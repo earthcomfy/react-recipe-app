@@ -2,18 +2,34 @@ import { useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { PencilIcon } from "@heroicons/react/solid";
 
-import { editUser, changePassword } from "../../redux/actions/user";
+import {
+  editUser,
+  changePassword,
+  changeAvatar,
+} from "../../redux/actions/user";
 
 export default function Profile() {
   const dispatch = useDispatch();
 
-  const { user } = useSelector((state) => state.user);
+  const { user, avatar } = useSelector((state) => state.user);
 
   const [username, setUsername] = useState(user.username);
   const [email, setEmail] = useState(user.email);
 
+  const [picture, setPicture] = useState(null);
+
   const [opassword, setOpassword] = useState(null);
   const [npassword, setNpassword] = useState(null);
+
+  const handleAvatarChange = (e) => {
+    e.preventDefault();
+
+    const formData = new FormData();
+
+    formData.append("avatar", picture, picture.name);
+
+    dispatch(changeAvatar(formData));
+  };
 
   return (
     <>
@@ -22,9 +38,37 @@ export default function Profile() {
           <h2 className="text-lg leading-6 font-medium text-gray-900">
             Update Profile
           </h2>
-          <div className="mt-2 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
+          <div className="mt-3 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-3">
             <div className="mt-4  md:mt-0">
-              <div>
+              <div className="flex items-center">
+                <label htmlFor="picture" className="relative cursor-pointer">
+                  <img
+                    className="h-16 w-16 rounded-full block"
+                    src={avatar.avatar}
+                    alt=""
+                  />
+                  <input
+                    id="picture"
+                    name="picture"
+                    type="file"
+                    className="sr-only"
+                    onChange={(e) => {
+                      setPicture(e.target.files[0]);
+                    }}
+                  />
+                </label>
+                <div>
+                  <button
+                    type="button"
+                    className="ml-2 bg-white py-2 px-2 border border-gray-300 rounded-md text-sm leading-4 font-medium text-gray-700 hover:bg-gray-50 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-teal-500"
+                    onClick={handleAvatarChange}
+                  >
+                    Change
+                  </button>
+                </div>
+              </div>
+
+              <div className="mt-3">
                 <label htmlFor="username" className="sr-only">
                   Username
                 </label>
@@ -67,7 +111,7 @@ export default function Profile() {
               className="-ml-1 mr-2 h-5 w-5 text-gray-400"
               aria-hidden="true"
             />
-            <span>Edit</span>
+            <span>Update</span>
           </button>
         </div>
       </div>

@@ -1,6 +1,8 @@
 import {
+  CHANGE_AVATAR,
   CHANGE_PASSWORD,
   EDIT_USER,
+  GET_AVATAR,
   GET_ERRORS,
   GET_SAVED_RECIPES,
   GET_USER_RECIPES,
@@ -100,6 +102,44 @@ export const getUserRecipes = (username) => (dispatch, getState) => {
     .then((res) => {
       dispatch({
         type: GET_USER_RECIPES,
+        payload: res.data,
+      });
+    })
+    .catch((err) => {
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response,
+      });
+    });
+};
+
+export const getAvatar = () => (dispatch, getState) => {
+  dispatch({ type: USER_LOADING });
+
+  axiosInstance
+    .get("/user/profile/avatar/", tokenConfig(getState))
+    .then((res) => {
+      dispatch({
+        type: GET_AVATAR,
+        payload: res.data,
+      });
+    })
+    .catch((err) => {
+      dispatch({
+        type: GET_ERRORS,
+        payload: err.response,
+      });
+    });
+};
+
+export const changeAvatar = (avatar) => (dispatch, getState) => {
+  dispatch({ type: USER_LOADING });
+
+  axiosInstance
+    .put("/user/profile/avatar/", avatar, tokenConfig(getState))
+    .then((res) => {
+      dispatch({
+        type: CHANGE_AVATAR,
         payload: res.data,
       });
     })

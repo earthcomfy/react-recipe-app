@@ -12,7 +12,7 @@ import {
 } from "@heroicons/react/outline";
 import { MailIcon } from "@heroicons/react/solid";
 
-import { loadUser } from "../../redux/actions/user";
+import { loadUser, getAvatar, changeAvatar } from "../../redux/actions/user";
 
 const navigation = [
   { name: "Profile", icon: UserIcon, to: "profile", current: true },
@@ -36,10 +36,11 @@ export default function Dashboard() {
 
   const dispatch = useDispatch();
 
-  const { user } = useSelector((state) => state.user);
+  const { user, avatar } = useSelector((state) => state.user);
 
   useEffect(() => {
     dispatch(loadUser());
+    dispatch(getAvatar());
   }, []);
 
   return (
@@ -96,11 +97,13 @@ export default function Dashboard() {
                   </div>
                 </Transition.Child>
                 <div className="flex-shrink-0 flex items-center px-4">
-                  <img
-                    className="h-8 w-auto"
-                    src="https://tailwindui.com/img/logos/easywire-logo-teal-300-mark-white-text.svg"
-                    alt="Easywire logo"
-                  />
+                  <Link to="/">
+                    <img
+                      className="h-8 w-auto"
+                      src="https://tailwindui.com/img/logos/easywire-logo-teal-300-mark-white-text.svg"
+                      alt="Easywire logo"
+                    />
+                  </Link>
                 </div>
                 <nav
                   className="mt-5 flex-shrink-0 h-full divide-y divide-teal-800 overflow-y-auto"
@@ -157,11 +160,13 @@ export default function Dashboard() {
           {/* Sidebar component, swap this element with another sidebar if you like */}
           <div className="flex flex-col flex-grow bg-teal-700 pt-5 pb-4 overflow-y-auto">
             <div className="flex items-center flex-shrink-0 px-4">
-              <img
-                className="h-8 w-auto"
-                src="https://tailwindui.com/img/logos/easywire-logo-teal-300-mark-white-text.svg"
-                alt="Easywire logo"
-              />
+              <Link to="/">
+                <img
+                  className="h-8 w-auto"
+                  src="https://tailwindui.com/img/logos/easywire-logo-teal-300-mark-white-text.svg"
+                  alt="Easywire logo"
+                />
+              </Link>
             </div>
             <nav
               className="mt-5 flex-1 flex flex-col divide-y divide-teal-800 overflow-y-auto"
@@ -221,7 +226,7 @@ export default function Dashboard() {
             <div className="flex items-center py-4 px-4 sm:px-6 lg:px-8">
               <img
                 className="h-16 w-16 rounded-full block"
-                src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=facearea&facepad=2.6&w=256&h=256&q=80"
+                src={avatar && avatar.avatar}
                 alt=""
               />
               <div>

@@ -6,6 +6,8 @@ import {
   CHANGE_PASSWORD,
   GET_SAVED_RECIPES,
   GET_USER_RECIPES,
+  CHANGE_AVATAR,
+  GET_AVATAR,
 } from "../actions/types";
 
 const initialState = {
@@ -13,6 +15,7 @@ const initialState = {
   user: null,
   savedRecipes: null,
   userRecipes: null,
+  avatar: null,
 };
 
 export default function (state = initialState, action) {
@@ -50,6 +53,18 @@ export default function (state = initialState, action) {
         ...state,
         isLoading: false,
         userRecipes: action.payload,
+      };
+    case GET_AVATAR:
+      return {
+        ...state,
+        isLoading: false,
+        avatar: action.payload,
+      };
+    case CHANGE_AVATAR:
+      return {
+        ...state,
+        isLoading: false,
+        avatar: action.payload,
       };
 
     default:
