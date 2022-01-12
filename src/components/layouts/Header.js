@@ -51,8 +51,8 @@ export default function Header() {
                     <Link to="/">
                       <img
                         className="block h-8 w-auto"
-                        src="https://tailwindui.com/img/logos/workflow-mark.svg?color=teal&shade=600"
-                        alt="Workflow"
+                        src="https://res.cloudinary.com/dmtc1wlgq/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1642004826/Food-Logo-Design_salyad.jpg"
+                        alt="Recipe Logo"
                       />
                     </Link>
                   </div>
