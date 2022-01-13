@@ -29,3 +29,5 @@
 3. Run `yarn start` to see the project live.
 
 ## License
+
+Usage is provided under the [MIT License](http://opensource.org/licenses/mit-license.php). See LICENSE for the full details.
