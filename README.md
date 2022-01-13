@@ -1,4 +1,4 @@
-# Recipe app with Django and React
+# Recipe Sharing App
 
 > Whether you like to share your recipes to the world or want to try out new foods, this app is for you.
 
@@ -6,10 +6,12 @@
 
 ## Technologies Used
 
-- Django, DRF
-- React.js, Redux, TailwindCSS
+- React.js
+- Redux
+- TailwindCSS
+- Backend using Django, DRF https://github.com/earthcomfy/recipe-api
 
-## Features
+## Basic Features
 
 1. JWT based user registration and login.
 2. Create/Update/Delete your recipe.
@@ -20,6 +22,10 @@
 - Search feature to quickly find recipes.
 - Follow people and get notified when they post a new recipe.
 
-## Getting Started/Installation
+## Quick Start
+
+1. Clone this repository to your local machine.
+2. Add the necessary packages => `yarn add`
+3. Run `yarn start` to see the project live.
 
 ## License
