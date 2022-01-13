@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const baseURL = "http://localhost:8000/api";
+const baseURL = "https://recipe-backend-api.herokuapp.com/api";
 
 const axiosInstance = axios.create({
   baseURL: baseURL,
@@ -16,7 +16,8 @@ axiosInstance.interceptors.response.use(
 
     if (
       error.response.status === 401 &&
-      originalRequest.url === "http://localhost:8000/api/user/token/refresh/"
+      originalRequest.url ===
+        "https://recipe-backend-api.herokuapp.com/api/user/token/refresh/"
     ) {
       window.location.href = "/user/login/";
       return Promise.reject(error);
