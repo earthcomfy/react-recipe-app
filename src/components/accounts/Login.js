@@ -33,13 +33,8 @@ export default function Login() {
     <>
       <div className="min-h-full flex items-center justify-center py-12 px-4 sm:px-6 lg:px-8">
         <div className="max-w-md w-full space-y-8">
-          <div>
-            <img
-              className="mx-auto h-12 w-auto"
-              src="https://res.cloudinary.com/dmtc1wlgq/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1642004826/Food-Logo-Design_salyad.jpg"
-              alt="Workflow"
-            />
-            <h2 className="mt-6 text-center text-3xl font-extrabold text-gray-900">
+          <div className="text-center">
+            <h2 className="mt-6 text-3xl font-light text-teal-900">
               Login to your account
             </h2>
           </div>

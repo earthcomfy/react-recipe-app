@@ -87,13 +87,9 @@ export default function Dashboard() {
                     </button>
                   </div>
                 </Transition.Child>
-                <div className="flex-shrink-0 flex items-center px-4">
-                  <Link to="/">
-                    <img
-                      className="h-8 w-auto"
-                      src="https://res.cloudinary.com/dmtc1wlgq/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1642004826/Food-Logo-Design_salyad.jpg"
-                      alt="Recipe Logo"
-                    />
+                <div className="px-4">
+                  <Link to="/" className="font-normal text-xl  text-teal-200">
+                    Mesob Recipe
                   </Link>
                 </div>
                 <nav
@@ -150,13 +146,9 @@ export default function Dashboard() {
         <div className="hidden lg:flex lg:w-64 lg:flex-col lg:fixed lg:inset-y-0">
           {/* Sidebar component, swap this element with another sidebar if you like */}
           <div className="flex flex-col flex-grow bg-teal-700 pt-5 pb-4 overflow-y-auto">
-            <div className="flex items-center flex-shrink-0 px-4">
-              <Link to="/">
-                <img
-                  className="h-8 w-auto"
-                  src="https://res.cloudinary.com/dmtc1wlgq/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1642004826/Food-Logo-Design_salyad.jpg"
-                  alt="Recipe Logo"
-                />
+            <div className="px-4">
+              <Link to="/" className="font-normal text-xl  text-teal-200">
+                Mesob Recipe
               </Link>
             </div>
             <nav

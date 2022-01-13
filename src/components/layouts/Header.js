@@ -48,12 +48,8 @@ export default function Header() {
               <div className="relative flex justify-between xl:grid xl:grid-cols-12 lg:gap-8">
                 <div className="flex md:absolute md:left-0 md:inset-y-0 lg:static xl:col-span-2">
                   <div className="flex-shrink-0 flex items-center">
-                    <Link to="/">
-                      <img
-                        className="block h-8 w-auto"
-                        src="https://res.cloudinary.com/dmtc1wlgq/image/upload/w_1000,c_fill,ar_1:1,g_auto,r_max,bo_5px_solid_red,b_rgb:262c35/v1642004826/Food-Logo-Design_salyad.jpg"
-                        alt="Recipe Logo"
-                      />
+                    <Link to="/" className="font-normal text-xl  text-teal-700">
+                      Mesob Recipe
                     </Link>
                   </div>
                 </div>
