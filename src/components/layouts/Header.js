@@ -28,7 +28,7 @@ export default function Header() {
       dispatch(loadUser());
       dispatch(getAvatar());
     }
-  }, []);
+  }, [token]);
 
   return (
     <>
@@ -105,7 +105,11 @@ export default function Header() {
                           <span className="sr-only">Open user menu</span>
                           <img
                             className="h-8 w-8 rounded-full"
-                            src={avatar && avatar.avatar}
+                            src={
+                              avatar && avatar.avatar
+                                ? avatar.avatar
+                                : "https://res.cloudinary.com/dmtc1wlgq/image/upload/v1641911896/media/avatar/default_zrdbiq.png"
+                            }
                             alt=""
                           />
                         </Menu.Button>
@@ -224,7 +228,11 @@ export default function Header() {
                     <div className="flex-shrink-0">
                       <img
                         className="h-10 w-10 rounded-full"
-                        src={avatar && avatar.avatar}
+                        src={
+                          avatar
+                            ? avatar.avatar
+                            : "https://res.cloudinary.com/dmtc1wlgq/image/upload/v1641911896/media/avatar/default_zrdbiq.png"
+                        }
                         alt=""
                       />
                     </div>

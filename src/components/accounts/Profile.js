@@ -44,7 +44,11 @@ export default function Profile() {
                 <label htmlFor="picture" className="relative cursor-pointer">
                   <img
                     className="h-16 w-16 rounded-full block"
-                    src={avatar.avatar}
+                    src={
+                      avatar && avatar.avatar
+                        ? avatar.avatar
+                        : "https://res.cloudinary.com/dmtc1wlgq/image/upload/v1641911896/media/avatar/default_zrdbiq.png"
+                    }
                     alt=""
                   />
                   <input
