@@ -2,12 +2,10 @@
 
 > Whether you like to share your recipes to the world or want to try out new foods, this app is for you.
 
-## Example in action...GIF..What the project does
-
 <table>
   <tr>
      <td>Recipe List Page</td>
-     <td>Holiday Mention</td>
+     <td>Login Page</td>
   </tr>
   <tr>
     <td valign="top"><img src = "https://user-images.githubusercontent.com/66206865/149466420-5a3ad850-80f4-44f3-bf31-929a57d6f793.png" width=500 /></td>
@@ -15,8 +13,8 @@
     
   </tr>
   <tr>
-     <td>First Screen Page</td>
-     <td>Holiday Mention</td>
+     <td>Recipe Quick View</td>
+     <td>Recipe Create Page</td>
   </tr>
   <tr>
     <td valign="top"><img src = "https://user-images.githubusercontent.com/66206865/149466498-14ab3176-1abe-497f-af3c-d31663838874.gif" width=500 /></td>
