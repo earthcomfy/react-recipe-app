@@ -1,7 +1,5 @@
 # Recipe Sharing App
 
-> Whether you like to share your recipes to the world or want to try out new foods, this app is for you.
-
 <table>
   <tr>
      <td>Recipe List Page</td>
