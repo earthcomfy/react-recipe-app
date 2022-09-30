@@ -18,7 +18,7 @@
 ## Quick Start
 
 1. Clone this repository to your local machine.
-2. Add the necessary packages => `yarn add`
+2. Add the necessary packages => `yarn`
 3. Run `yarn start` to see the project live.
 
 ## GIFs
